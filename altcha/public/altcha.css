@@ -1,0 +1,15 @@
+.altcha-widget-wrap {
+  margin-bottom: 1rem !important;
+}
+
+.altcha-widget-wrap .altcha-main {
+  line-height: 1;
+}
+
+.altcha-widget-wrap .altcha-main svg {
+  display: block;
+}
+
+.login {
+  --altcha-max-width: 100%;
+}
