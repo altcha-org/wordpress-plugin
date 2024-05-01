@@ -8,6 +8,12 @@ Read more about ALTCHA: https://github.com/altcha-org/altcha
 
 Website: https://altcha.org
 
+## Status
+
+Use with caution, this plugin is new and the ALTCHA API is currently in public beta, that includes the Spam Filter.
+
+Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpress-plugin/issues).
+
 ## Supported Integrations
 
 * Contact Form 7
@@ -20,10 +26,11 @@ Website: https://altcha.org
 * Custom HTML (with a short code `[altcha]`)
 
 ## Installation
- 
-1. Upload `altcha` folder to the `/wp-content/plugins/` directory  
-2. Activate the plugin through the 'Plugins' menu in WordPress  
-3. Review the settings and enable the your integrations
+
+1. Download the `.zip` from the [Releases](https://github.com/altcha-org/wordpress-plugin/releases).
+2. Upload `altcha` folder to the `/wp-content/plugins/` directory  
+3. Activate the plugin through the 'Plugins' menu in WordPress  
+4. Review the settings and enable the your integrations
 
 ## License
 
