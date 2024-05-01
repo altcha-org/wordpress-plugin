@@ -41,7 +41,7 @@ Operating in Self-hosted mode (the default setting), this plugin remains fully c
 2. Activate the plugin through the 'Plugins' menu in WordPress  
 3. Review the settings and enable the your integrations
 
-== Forms and Plugins Supported ==
+== Supported Integrations ==
 
 * Contact Form 7
 * Forminator
