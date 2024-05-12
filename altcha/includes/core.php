@@ -24,6 +24,8 @@ class AltchaPlugin
 
   public static $option_complexity = "altcha_complexity";
 
+  public static $option_expires = "altcha_expires";
+
   public static $option_blockspam = "altcha_blockspam";
 
   public static $option_send_ip = "altcha_send_ip";
@@ -84,6 +86,11 @@ class AltchaPlugin
   public function get_complexity()
   {
     return trim(get_option(AltchaPlugin::$option_complexity));
+  }
+
+  public function get_expires()
+  {
+    return get_option(AltchaPlugin::$option_expires);
   }
 
   public function get_language()
@@ -242,6 +249,14 @@ class AltchaPlugin
       $hmac_key = $this->get_secret();
     }
     $data = json_decode(base64_decode($payload));
+    $salt_url = parse_url($data->salt);
+    parse_str($salt_url['query'], $salt_params);
+    if (!empty($salt_params['expires'])) {
+      $expires = intval($salt_params['expires'], 10);
+      if ($expires > 0 && $expires < time()) {
+        return false;
+      }
+    }
     $alg_ok = ($data->algorithm === 'SHA-256');
     $calculated_challenge = hash('sha256', $data->salt . $data->number);
     $challenge_ok = ($data->challenge === $calculated_challenge);
@@ -251,7 +266,7 @@ class AltchaPlugin
     return $verified;
   }
 
-  public function generate_challenge($hmac_key = null, $complexity = null)
+  public function generate_challenge($hmac_key = null, $complexity = null, $expires = null)
   {
     if ($hmac_key === null) {
       $hmac_key = $this->get_secret();
@@ -259,7 +274,15 @@ class AltchaPlugin
     if ($complexity === null) {
       $complexity = $this->get_complexity();
     }
+    if ($expires === null) {
+      $expires = intval($this->get_expires(), 10);
+    }
     $salt = $this->random_secret();
+    if ($expires > 0) {
+      $salt = $salt . '?' . http_build_query(array(
+        'expires' => time() + $expires
+      ));
+    }
     switch ($complexity) {
       case 'low':
         $min_secret = 100;

@@ -27,6 +27,11 @@ if (is_admin()) {
 
     register_setting(
       'altcha_options',
+      AltchaPlugin::$option_expires
+    );
+
+    register_setting(
+      'altcha_options',
       AltchaPlugin::$option_language
     );
 
@@ -170,6 +175,23 @@ if (is_admin()) {
           "low" => "Low",
           "medium" => "Medium",
           "high" => "High"
+        )
+      )
+    );
+
+    add_settings_field(
+      'altcha_settings_expires_field',
+      __('Expiration', 'altcha'),
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_general_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_expires,
+        "hint" => "Select the life-span of the challenge.",
+        "options" => array(
+          "3600" => "1 hour",
+          "14400" => "4 hours",
+          "0" => "None",
         )
       )
     );

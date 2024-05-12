@@ -2,7 +2,7 @@
 Tags: altcha, spam, spam protection, captcha, antispam, recaptcha, block spam, anti-spam
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 0.1.0
+Version: 0.1.1
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6
@@ -53,6 +53,10 @@ Operating in Self-hosted mode (the default setting), this plugin remains fully c
 * Custom HTML (with a short code `[altcha]`)
 
 == Changelog ==
+
+= 0.1.1 =
+* Widget v0.4.0
+* Challenge expiration
 
 = 0.1.0 =
 * Firts version

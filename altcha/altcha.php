@@ -13,9 +13,9 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html  
  */
 
-define('ALTCHA_VERSION', '0.1.0');
+define('ALTCHA_VERSION', '0.1.1');
 define('ALTCHA_WEBSITE', 'https://altcha.org/');
-define('ALTCHA_WIDGET_VERSION', '0.3.2');
+define('ALTCHA_WIDGET_VERSION', '0.4.0');
 define('ALTCHA_LANGUAGES', [
   "bg" => "Bulgarian",
   "ca" => "Catalan",
@@ -89,6 +89,7 @@ function altcha_activate()
 {
   update_option(AltchaPlugin::$option_api, 'selfhosted');
   update_option(AltchaPlugin::$option_api_key, '');
+  update_option(AltchaPlugin::$option_expires, '3600');
   update_option(AltchaPlugin::$option_secret, AltchaPlugin::$instance->random_secret());
   update_option(AltchaPlugin::$option_language, 'en');
   update_option(AltchaPlugin::$option_hidefooter, true);
