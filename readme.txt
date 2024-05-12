@@ -1,11 +1,11 @@
-=== ALTCHA Spam Protection for WordPress ===
-Tags: altcha, spam, spam protection, captcha, antispam, recaptcha, block spam, anti-spam
+=== ALTCHA Spam Protection ===
+Tags: altcha, spam, spam protection, captcha, antispam, block spam, anti-spam
 Author: Altcha.org
 Author URI: https://altcha.org
 Version: 0.1.1
 Requires at least: 5.0
 Requires PHP: 7.3
-Tested up to: 6
+Tested up to: 6.5
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -51,6 +51,10 @@ Operating in Self-hosted mode (the default setting), this plugin remains fully c
 * WordPress Login, Register, Password reset
 * WordPress Comments
 * Custom HTML (with a short code `[altcha]`)
+
+== Screenshots ==
+
+1. Friction-less Captcha without puzzles
 
 == Changelog ==
 

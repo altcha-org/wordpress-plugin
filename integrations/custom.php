@@ -16,7 +16,7 @@ add_action(
         ALTCHA_VERSION,
         true
       );
-      $attrs = json_encode($plugin->get_widget_attrs($mode));
+      $attrs = wp_json_encode($plugin->get_widget_attrs($mode));
       wp_register_script('altcha-widget-custom-options', '');
       wp_enqueue_script('altcha-widget-custom-options');
       wp_add_inline_script(

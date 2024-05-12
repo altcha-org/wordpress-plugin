@@ -5,10 +5,10 @@
  * Description: ALTCHA is a free, open-source Captcha alternative. Cookie-less and fully compliant with GDPR.
  * Author: Altcha.org
  * Author URI: https://altcha.org
- * Version: 0.1.0
+ * Version: 0.1.1
  * Requires at least: 5.0
  * Requires PHP: 7.3
- * Tested up to: 6
+ * Tested up to: 6.5
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html  
  */

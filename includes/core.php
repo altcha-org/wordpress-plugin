@@ -249,7 +249,7 @@ class AltchaPlugin
       $hmac_key = $this->get_secret();
     }
     $data = json_decode(base64_decode($payload));
-    $salt_url = parse_url($data->salt);
+    $salt_url = wp_parse_url($data->salt);
     parse_str($salt_url['query'], $salt_params);
     if (!empty($salt_params['expires'])) {
       $expires = intval($salt_params['expires'], 10);
@@ -323,7 +323,7 @@ class AltchaPlugin
     $hidefooter = $can_hide_branding && $this->get_hidefooter();
     $blockspam = $this->get_blockspam();
     $auto = $this->get_auto();
-    $strings = json_encode($this->get_translations());
+    $strings = wp_json_encode($this->get_translations());
     $attrs = array(
       'challengeurl' => $challengeurl,
       'strings' => $strings,
@@ -384,7 +384,7 @@ class AltchaPlugin
     $api = $this->get_api();
     $api_key = $this->get_api_key();
     $resp = wp_remote_post("https://$api.altcha.org/api/v1/classify", array(
-      'body' => json_encode($body),
+      'body' => wp_json_encode($body),
       'headers' => array(
         'authorization' => "Bearer $api_key",
         'accept' => 'application/json',
