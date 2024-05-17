@@ -137,9 +137,9 @@ function altcha_settings_field_callback(array $args)
 {
   $type = $args['type'];
   $name = $args['name'];
-  $hint = $args['hint'];
+  $hint = isset($args['hint']) ? $args['hint'] : null;
   $attrs = isset($args['attrs']) ? $args['attrs'] : '';
-  $description = $args['description'];
+  $description = isset($args['description']) ? $args['description'] : null;
   $setting = get_option($name);
   $value = isset($setting) ? esc_attr($setting) : '';
   $checked = "";
@@ -159,11 +159,11 @@ function altcha_settings_field_callback(array $args)
 function altcha_settings_select_callback(array $args)
 {
   $name = $args['name'];
-  $hint = $args['hint'];
-  $disabled = $args['disabled'];
-  $description = $args['description'];
-  $options = $args['options'];
-  $spamfilter_options = $args['spamfilter_options'] ?: [];
+  $hint = isset($args['hint']) ? $args['hint'] : null;
+  $disabled = isset($args['disabled']) ? $args['disabled'] : false;
+  $description = isset($args['description']) ? $args['description'] : null;
+  $options = isset($args['options']) ? $args['options'] : [];
+  $spamfilter_options = isset($args['spamfilter_options']) ? $args['spamfilter_options'] : [];
   $setting = get_option($name);
   $value = isset($setting) ? esc_attr($setting) : '';
 ?>

@@ -2,7 +2,7 @@
 Tags: altcha, spam, spam protection, captcha, antispam, block spam, anti-spam
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 0.1.1
+Version: 0.1.2
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6.5
@@ -57,6 +57,9 @@ Operating in Self-hosted mode (the default setting), this plugin remains fully c
 1. Friction-less Captcha without puzzles
 
 == Changelog ==
+
+= 0.1.2 =
+* Fixed widgets footer link and log warnings
 
 = 0.1.1 =
 * Widget v0.4.0

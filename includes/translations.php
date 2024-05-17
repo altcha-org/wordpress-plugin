@@ -1,5 +1,7 @@
 <?php 
 
+$ALTCHA_WEBSITE = constant('ALTCHA_WEBSITE');
+
 define('ALTCHA_VERSION_TRANSLATIONS', array(
   "bg" => array(
     "error" => "Верификацията не бе успешна. Моля, опитайте отново по-късно.",
