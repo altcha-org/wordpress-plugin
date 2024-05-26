@@ -86,7 +86,7 @@ add_filter(
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_reset_password();
     if (!empty($mode)) {
-      if (!$plugin->verify($_POST['altcha']) === false) {
+      if ($plugin->verify($_POST['altcha']) === false) {
         wp_die('<strong>' . __('Error', 'altcha') . '</strong> : ' . __(AltchaPlugin::$message_cannot_submit, 'altcha'));
       }
     }

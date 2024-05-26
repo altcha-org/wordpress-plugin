@@ -219,7 +219,7 @@ class AltchaPlugin
       return false;
     }
     $data = json_decode(base64_decode($payload));
-    if ($data->verificationData) {
+    if (isset($data->verificationData)) {
       return $this->verify_server_signature($payload, $hmac_key);
     }
     return $this->verify_solution($payload, $hmac_key);

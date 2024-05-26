@@ -162,8 +162,8 @@ function altcha_settings_select_callback(array $args)
   $hint = isset($args['hint']) ? $args['hint'] : null;
   $disabled = isset($args['disabled']) ? $args['disabled'] : false;
   $description = isset($args['description']) ? $args['description'] : null;
-  $options = isset($args['options']) ? $args['options'] : [];
-  $spamfilter_options = isset($args['spamfilter_options']) ? $args['spamfilter_options'] : [];
+  $options = isset($args['options']) ? $args['options'] : array();
+  $spamfilter_options = isset($args['spamfilter_options']) ? $args['spamfilter_options'] : array();
   $setting = get_option($name);
   $value = isset($setting) ? esc_attr($setting) : '';
 ?>
