@@ -22,6 +22,9 @@ class GFForms_Altcha_Field extends GF_Field
 	{
 		return array(
 			'label_setting',
+			'description_setting',
+			'label_placement_setting',
+			'error_message_setting'
 		);
 	}
 
