@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 require plugin_dir_path(__FILE__) . '../admin/options.php';
 
 if (is_admin()) {

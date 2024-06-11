@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 function altcha_plugin_active($name)
 {
   switch ($name) {
@@ -43,4 +45,9 @@ function altcha_enqueue_scripts() {
     ALTCHA_VERSION,
     true
   );
+}
+
+function altcha_get_sanitized_solution_from_post()
+{
+	return isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
 }

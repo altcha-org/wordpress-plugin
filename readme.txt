@@ -1,12 +1,13 @@
 === ALTCHA Spam Protection ===
-Tags: altcha, spam, spam protection, captcha, antispam, block spam, anti-spam
+Tags: altcha, captcha, spam, anti-spam, anti-bot, antispam, recaptcha, hcaptcha, gdpr
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 0.1.4
+Version: 0.1.5
+Stable tag: 0.1.5
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6.5
-License: GPL v2 or later
+License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
 ALTCHA offers a free, open-source Captcha alternative, ensuring robust spam protection while respecting user privacy and GDPR compliance.
@@ -33,7 +34,16 @@ ALTCHA prioritizes user privacy by avoiding the use of cookies and fingerprintin
 
 = No external service =
 
-Operating in Self-hosted mode (the default setting), this plugin remains fully contained within your WordPress installation, eliminating any reliance on external services.
+Operating in Self-hosted mode (the default setting), this plugin remains fully contained within your WordPress installation, eliminating any reliance on external services. You can opt-in for our SaaS version to utilize the Spam Filter API. For more information visit https://altcha.org.
+
+== Modes of Operation ==
+
+This plugin operates in two modes, you can select which mode you want in the settings (see API Region):
+
+* Self-hosted - fully self-contained without external services.
+* 3rd-party external service - ALTCHA’s SaaS requiring an [API Key](https://altcha.org/docs/api/api_keys/), allows you to choose EU or US region.
+
+Note: The Spam Filter requires ALTCHA’s SaaS. [Create an API Key](https://altcha.org/docs/api/api_keys/) to access it.
  
 == Installation ==
  
@@ -52,11 +62,26 @@ Operating in Self-hosted mode (the default setting), this plugin remains fully c
 * WordPress Comments
 * Custom HTML (with a short code `[altcha]`)
 
+== Source Code ==
+
+All source code for the plugin, and the ALTCHA widget is available on GitHub. In the repository, you'll also find versions of non-minified JavaScript and CSS assets:
+
+* Plugin: https://github.com/altcha-org/wordpress-plugin
+* ALTCHA Widget: https://github.com/altcha-org/altcha
+
+== Terms of Service And Privacy Policy for SaaS ==
+
+* Privacy Policy: https://altcha.org/privacy-policy
+* Terms of Service: https://altcha.org/terms-of-service
+
 == Screenshots ==
 
 1. Friction-less Captcha without puzzles
 
 == Changelog ==
+
+= 0.1.5 =
+* Fixes requested by Plugin Directory review
 
 = 0.1.4 =
 * GravityForms - added label and description options
@@ -74,4 +99,4 @@ Operating in Self-hosted mode (the default setting), this plugin remains fully c
 * Challenge expiration
 
 = 0.1.0 =
-* Firts version
+* First version

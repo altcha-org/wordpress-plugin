@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if (is_admin()) {
   add_action('admin_init', 'altcha_settings_init');
 
@@ -113,14 +115,14 @@ if (is_admin()) {
     // Section
     add_settings_section(
       'altcha_general_settings_section',
-      __('General', 'altcha'),
+      __('General', 'altcha-spam-protection'),
       'altcha_general_section_callback',
       'altcha_admin'
     );
 
     add_settings_field(
       'altcha_settings_api_field',
-      __('API Region', 'altcha'),
+      __('API Region', 'altcha-spam-protection'),
       'altcha_settings_select_callback',
       'altcha_admin',
       'altcha_general_settings_section',
@@ -137,12 +139,12 @@ if (is_admin()) {
 
     add_settings_field(
       'altcha_settings_api_key_field',
-      __('API Key', 'altcha'),
+      __('API Key', 'altcha-spam-protection'),
       'altcha_settings_field_callback',
       'altcha_admin',
       'altcha_general_settings_section',
       array(
-        "attrs" => "data-spamfilter",
+        "spamfilter" => true,
         "name" => AltchaPlugin::$option_api_key,
         "hint" => "Configure your API Key. Only for API modes. Leave this field empty in self-hosted.",
         "type" => "text"
@@ -151,7 +153,7 @@ if (is_admin()) {
 
     add_settings_field(
       'altcha_settings_secret_field',
-      __('Secret Key', 'altcha'),
+      __('Secret Key', 'altcha-spam-protection'),
       'altcha_settings_field_callback',
       'altcha_admin',
       'altcha_general_settings_section',
@@ -164,7 +166,7 @@ if (is_admin()) {
 
     add_settings_field(
       'altcha_settings_complexity_field',
-      __('Complexity', 'altcha'),
+      __('Complexity', 'altcha-spam-protection'),
       'altcha_settings_select_callback',
       'altcha_admin',
       'altcha_general_settings_section',
@@ -181,7 +183,7 @@ if (is_admin()) {
 
     add_settings_field(
       'altcha_settings_expires_field',
-      __('Expiration', 'altcha'),
+      __('Expiration', 'altcha-spam-protection'),
       'altcha_settings_select_callback',
       'altcha_admin',
       'altcha_general_settings_section',
@@ -199,19 +201,19 @@ if (is_admin()) {
     // Section
     add_settings_section(
       'altcha_spamfilter_settings_section',
-      __('Spam Filter', 'altcha'),
+      __('Spam Filter', 'altcha-spam-protection'),
       'altcha_spam_filter_section_callback',
       'altcha_admin'
     );
 
     add_settings_field(
       'altcha_settings_blockspam_field',
-      __('Block Spam Submissions', 'altcha'),
+      __('Block Spam Submissions', 'altcha-spam-protection'),
       'altcha_settings_field_callback',
       'altcha_admin',
       'altcha_spamfilter_settings_section',
       array(
-        "attrs" => "data-spamfilter",
+        "spamfilter" => true,
         "name" => AltchaPlugin::$option_blockspam,
         "description" => "Yes",
         "hint" => "Don't allow form submissions if the Spam Filter detects potential spam.",
@@ -221,12 +223,12 @@ if (is_admin()) {
 
     add_settings_field(
       'altcha_settings_send_ip_field',
-      __('Classify IP address', 'altcha'),
+      __('Classify IP address', 'altcha-spam-protection'),
       'altcha_settings_field_callback',
       'altcha_admin',
       'altcha_spamfilter_settings_section',
       array(
-        "attrs" => "data-spamfilter",
+        "spamfilter" => true,
         "name" => AltchaPlugin::$option_send_ip,
         "description" => "Yes",
         "hint" => "Whether to send the user's IP address for classification.",
@@ -237,14 +239,14 @@ if (is_admin()) {
     // Section
     add_settings_section(
       'altcha_widget_settings_section',
-      __('Widget Customization', 'altcha'),
+      __('Widget Customization', 'altcha-spam-protection'),
       'altcha_widget_section_callback',
       'altcha_admin'
     );
 
     add_settings_field(
       'altcha_settings_language_field',
-      __('Language', 'altcha'),
+      __('Language', 'altcha-spam-protection'),
       'altcha_settings_select_callback',
       'altcha_admin',
       'altcha_widget_settings_section',
@@ -257,7 +259,7 @@ if (is_admin()) {
 
     add_settings_field(
       'altcha_settings_auto_field',
-      __('Auto verification', 'altcha'),
+      __('Auto verification', 'altcha-spam-protection'),
       'altcha_settings_select_callback',
       'altcha_admin',
       'altcha_widget_settings_section',
@@ -275,7 +277,7 @@ if (is_admin()) {
 
     add_settings_field(
       'altcha_settings_hidelogo_field',
-      __('Hide logo', 'altcha'),
+      __('Hide logo', 'altcha-spam-protection'),
       'altcha_settings_field_callback',
       'altcha_admin',
       'altcha_widget_settings_section',
@@ -289,7 +291,7 @@ if (is_admin()) {
 
     add_settings_field(
       'altcha_settings_hidefooter_field',
-      __('Hide footer', 'altcha'),
+      __('Hide footer', 'altcha-spam-protection'),
       'altcha_settings_field_callback',
       'altcha_admin',
       'altcha_widget_settings_section',
@@ -304,7 +306,7 @@ if (is_admin()) {
     // Section
     add_settings_section(
       'altcha_integrations_settings_section',
-      __('Integrations', 'altcha'),
+      __('Integrations', 'altcha-spam-protection'),
       'altcha_integrations_section_callback',
       'altcha_admin'
     );
@@ -444,7 +446,7 @@ if (is_admin()) {
     // Section
     add_settings_section(
       'altcha_wordpress_settings_section',
-      __('Wordpress', 'altcha'),
+      __('Wordpress', 'altcha-spam-protection'),
       'altcha_wordpress_section_callback',
       'altcha_admin'
     );

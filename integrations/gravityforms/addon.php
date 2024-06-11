@@ -1,7 +1,10 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 GFForms::include_addon_framework();
 
-class GFFormsAltchaAddOn extends GFAddOn
+class ALTCHA_GFFormsAddOn extends GFAddOn
 {
 
     protected $_version = ALTCHA_VERSION;
@@ -15,7 +18,7 @@ class GFFormsAltchaAddOn extends GFAddOn
     public static function get_instance()
     {
         if (self::$_instance == null) {
-            self::$_instance = new GFFormsAltchaAddOn();
+            self::$_instance = new ALTCHA_GFFormsAddOn();
         }
 
         return self::$_instance;

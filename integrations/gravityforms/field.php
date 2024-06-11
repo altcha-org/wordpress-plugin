@@ -1,6 +1,8 @@
 <?php
 
-class GFForms_Altcha_Field extends GF_Field
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+class ALTCHA_GFForms_Field extends GF_Field
 {
 
 	public $type = 'altcha';
@@ -72,12 +74,12 @@ class GFForms_Altcha_Field extends GF_Field
 		$plugin = AltchaPlugin::$instance;
 		$mode = $plugin->get_integration_gravityforms();
 		if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-			if ($plugin->verify($_POST['altcha']) === false) {
+			if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
 				$this->failed_validation  = true;
-				$this->validation_message = __(AltchaPlugin::$message_cannot_submit, "altcha");
+				$this->validation_message = __('Cannot submit your message.', "altcha");
 			}
 		}
 	}
 }
 
-GF_Fields::register(new GFForms_Altcha_Field());
+GF_Fields::register(new ALTCHA_GFForms_Field());

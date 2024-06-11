@@ -1,5 +1,6 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 add_action(
   'wp_enqueue_scripts',
@@ -17,7 +18,13 @@ add_action(
         true
       );
       $attrs = wp_json_encode($plugin->get_widget_attrs($mode));
-      wp_register_script('altcha-widget-custom-options', '');
+      wp_register_script(
+        'altcha-widget-custom-options',
+        '',
+        array(),
+        ALTCHA_VERSION,
+        false,
+      );
       wp_enqueue_script('altcha-widget-custom-options');
       wp_add_inline_script(
         'altcha-widget-custom-options',

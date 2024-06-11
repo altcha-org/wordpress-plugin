@@ -1,0 +1,15 @@
+.altcha-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem 0 0;
+  margin-bottom: 1rem;
+}
+.altcha-logo {
+  border-radius: 5px;
+}
+.altcha-title {
+  font-weight: 600;
+  font-size: 180%;
+  margin-bottom: 0.5rem;
+}

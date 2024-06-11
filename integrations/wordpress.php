@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 add_action(
   'register_form',
   function () {
@@ -19,10 +21,10 @@ add_action(
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_register();
     if (!empty($mode)) {
-      if ($plugin->verify($_POST['altcha']) === false) {
+      if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
         return $errors->add(
           'altcha_error_message',
-          '<strong>' . __('Error', 'altcha') . '</strong> : ' . __(AltchaPlugin::$message_cannot_submit, 'altcha')
+          '<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Cannot submit your message.', 'altcha-spam-protection')
         );
       }
     }
@@ -54,8 +56,8 @@ add_filter(
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_login();
     if (!empty($mode)) {
-      if ($plugin->verify($_POST['altcha']) === false) {
-        return new WP_Error("altcha-error", '<strong>' . __('Error', 'altcha') . '</strong> : ' . __(AltchaPlugin::$message_cannot_submit, 'altcha'));
+      if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
+        return new WP_Error("altcha-error", '<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Cannot submit your message.', 'altcha-spam-protection'));
       }
     }
     return $user;
@@ -86,8 +88,8 @@ add_filter(
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_reset_password();
     if (!empty($mode)) {
-      if ($plugin->verify($_POST['altcha']) === false) {
-        wp_die('<strong>' . __('Error', 'altcha') . '</strong> : ' . __(AltchaPlugin::$message_cannot_submit, 'altcha'));
+      if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
+        wp_die('<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Cannot submit your message.', 'altcha-spam-protection'));
       }
     }
     return $val;
@@ -132,8 +134,8 @@ add_filter(
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_comments();
     if (!empty($mode)) {
-      if ($plugin->verify($_POST['altcha']) === false) {
-        wp_die('<strong>' . __('Error', 'altcha') . '</strong> : ' . __(AltchaPlugin::$message_cannot_submit, 'altcha'));
+      if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
+        wp_die('<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Cannot submit your message.', 'altcha-spam-protection'));
       }
     }
     return $comment;

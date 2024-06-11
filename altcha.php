@@ -1,19 +1,22 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /*
  * Plugin Name: ALTCHA Spam Protection
- * Description: ALTCHA is a free, open-source Captcha alternative. Cookie-less and fully compliant with GDPR.
+ * Description: ALTCHA is a free, open-source CAPTCHA alternative that offers robust protection without using cookies, ensuring full GDPR compliance by design. It also provides invisible anti-spam and anti-bot protection through ALTCHA's API.
  * Author: Altcha.org
  * Author URI: https://altcha.org
- * Version: 0.1.4
+ * Version: 0.1.5
+ * Stable tag: 0.1.5
  * Requires at least: 5.0
  * Requires PHP: 7.3
  * Tested up to: 6.5
- * License: GPL v2 or later
+ * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html  
  */
 
-define('ALTCHA_VERSION', '0.1.4');
+define('ALTCHA_VERSION', '0.1.5');
 define('ALTCHA_WEBSITE', 'https://altcha.org/');
 define('ALTCHA_WIDGET_VERSION', '0.4.3');
 define('ALTCHA_LANGUAGES', [
@@ -69,6 +72,8 @@ require plugin_dir_path( __FILE__ ) . './integrations/wordpress.php';
 AltchaPlugin::$widget_script_src = plugin_dir_url(__FILE__) . "public/altcha.min.js";
 AltchaPlugin::$widget_style_src = plugin_dir_url(__FILE__) . "public/altcha.css";
 AltchaPlugin::$wp_script_src = plugin_dir_url(__FILE__) . "public/script.js";
+AltchaPlugin::$admin_script_src = plugin_dir_url(__FILE__) . "public/admin.js";
+AltchaPlugin::$admin_css_src = plugin_dir_url(__FILE__) . "public/admin.css";
 AltchaPlugin::$custom_script_src = plugin_dir_url(__FILE__) . "public/custom.js";
 
 register_activation_hook(__FILE__, 'altcha_activate');

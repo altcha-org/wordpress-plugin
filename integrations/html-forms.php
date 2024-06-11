@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if (altcha_plugin_active('html-forms')) {
   add_filter(
     'hf_form_html',
@@ -25,7 +27,7 @@ if (altcha_plugin_active('html-forms')) {
           return "altcha_spam";
         }
       } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-        if ($plugin->verify($_POST['altcha']) === false) {
+        if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
           return "altcha_invalid";
         }
       }
@@ -38,14 +40,14 @@ if (altcha_plugin_active('html-forms')) {
   add_filter(
     'hf_form_message_altcha_invalid',
     function ($message) {
-      return AltchaPlugin::$message_cannot_submit;
+      return __('Cannot submit your message.', "altcha");
     }
   );
 
   add_filter(
     'hf_form_message_altcha_spam',
     function ($message) {
-      return AltchaPlugin::$message_cannot_submit;
+      return __('Cannot submit your message.', "altcha");
     }
   );
 }

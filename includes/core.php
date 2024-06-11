@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 class AltchaPlugin
 {
   public static $instance;
@@ -7,6 +9,10 @@ class AltchaPlugin
   public static $widget_script_src = "";
 
   public static $wp_script_src = "";
+
+  public static $admin_script_src = "";
+
+  public static $admin_css_src = "";
 
   public static $custom_script_src = "";
 
@@ -57,8 +63,6 @@ class AltchaPlugin
   public static $option_integration_wordpress_comments = "altcha_integration_wordpress_comments";
 
   public static $option_integration_wpforms = "altcha_integration_wpforms";
-
-  public static $message_cannot_submit = "Cannot submit your message.";
 
   public $spamfilter_result = null;
 
@@ -177,7 +181,8 @@ class AltchaPlugin
   {
     foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key) {
       if (array_key_exists($key, $_SERVER) === true) {
-        foreach (explode(',', $_SERVER[$key]) as $ip) {
+        $value = trim(sanitize_text_field($_SERVER[$key]));
+        foreach (explode(',', $value) as $ip) {
           $ip = trim($ip);
 
           if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false) {
@@ -398,6 +403,8 @@ class AltchaPlugin
       $json = json_decode($resp['body'], true);
       $this->spamfilter_result = $json;
       return $json['classification'] !== 'BAD';
+    } else {
+      error_log(sprintf("Spam Filter responsed with %s - %s", $status, $resp['body']));
     }
     return false;
   }

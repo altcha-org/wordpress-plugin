@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if (altcha_plugin_active('wpforms')) {
   add_filter(
     'wpforms_display_submit_before',
@@ -9,7 +11,7 @@ if (altcha_plugin_active('wpforms')) {
       if ($mode === "captcha" || $mode === "captcha_spamfilter") {
         altcha_enqueue_scripts();
         altcha_enqueue_styles();
-        echo $plugin->render_widget($mode, true);
+        echo AltchaPlugin::$instance->render_widget($mode, true);
       }
     },
     10,
@@ -23,11 +25,11 @@ if (altcha_plugin_active('wpforms')) {
       $mode = $plugin->get_integration_wpforms();
       if ($mode === "spamfilter") {
         if ($plugin->spam_filter_check($_POST) === false) {
-          wpforms()->process->errors[$form_data['id']]['header'] = esc_html__(AltchaPlugin::$message_cannot_submit, 'altcha');
+          wpforms()->process->errors[$form_data['id']]['header'] = esc_html__('Cannot submit your message.', 'altcha-spam-protection');
         }
       } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-        if ($plugin->verify($_POST['altcha']) === false) {
-          wpforms()->process->errors[$form_data['id']]['header'] = esc_html__(AltchaPlugin::$message_cannot_submit, 'altcha');
+        if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
+          wpforms()->process->errors[$form_data['id']]['header'] = esc_html__('Cannot submit your message.', 'altcha-spam-protection');
         }
       }
     },

@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if (altcha_plugin_active('contact-form-7')) {
   add_filter(
     'wpcf7_form_elements',
@@ -28,7 +30,7 @@ if (altcha_plugin_active('contact-form-7')) {
       if ($mode === "spamfilter") {
         return $plugin->spam_filter_check($_POST) === false;
       } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-        return $plugin->verify($_POST['altcha']) === false;
+        return $plugin->verify(altcha_get_sanitized_solution_from_post()) === false;
       }
       return $spam;
     },

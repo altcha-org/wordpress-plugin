@@ -14,6 +14,10 @@ Use with caution, this plugin is new and the ALTCHA API is currently in public b
 
 Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpress-plugin/issues).
 
+## WordPress Plugin Directory Status
+
+The plugin has been submitted to the directory, it's currently under review.
+
 ## Supported Integrations
 
 * Contact Form 7

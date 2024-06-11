@@ -1,5 +1,7 @@
 <?php 
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $ALTCHA_WEBSITE = constant('ALTCHA_WEBSITE');
 
 define('ALTCHA_VERSION_TRANSLATIONS', array(

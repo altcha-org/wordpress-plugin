@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 add_filter('script_loader_tag', 'altcha_script_tags', 10, 3);
 
 function altcha_script_tags($tag, $handle, $src)

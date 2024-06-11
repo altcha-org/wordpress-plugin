@@ -1,7 +1,23 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 function altcha_options_page_html()
 {
+  wp_enqueue_script(
+    'altcha-admin-js',
+    AltchaPlugin::$admin_script_src,
+    array(),
+    ALTCHA_VERSION,
+    true
+  );
+  wp_enqueue_style(
+    'altcha-admin-styles',
+    AltchaPlugin::$admin_css_src,
+    array(),
+    ALTCHA_VERSION,
+    'all'
+  );
 ?>
   <div class="altcha-head">
     <div class="altcha-logo">
@@ -43,44 +59,9 @@ function altcha_options_page_html()
     </form>
 
     <div style="opacity: 0.8;">
-      <p>ALTCHA Spam Protection for WordPress, plugin version <?php echo AltchaPlugin::$version ?>, widget version <?php echo AltchaPlugin::$widget_version ?></p>
+      <p>ALTCHA Spam Protection for WordPress, plugin version <?php echo esc_html(AltchaPlugin::$version) ?>, widget version <?php echo esc_html(AltchaPlugin::$widget_version) ?></p>
     </div>
-
-    <script>
-      (() => {
-        document.addEventListener('DOMContentLoaded', () => {
-          function onApiChange(api) {
-            [...document.querySelectorAll('[data-spamfilter]')].forEach((el) => {
-              el.disabled = api === 'selfhosted';
-            });
-          }
-          const apiEl = document.querySelector('#altcha_api');
-          if (apiEl) {
-            apiEl.addEventListener('change', (ev) => onApiChange(ev.target.value));
-            onApiChange(apiEl.value);
-          }
-        });
-      })();
-    </script>
   </div>
-
-  <style>
-    .altcha-head {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 2rem 0 0;
-      margin-bottom: 1rem;
-    }
-    .altcha-logo {
-      border-radius: 5px;
-    }
-    .altcha-title {
-      font-weight: 600;
-      font-size: 180%;
-      margin-bottom: 0.5rem;
-    }
-  </style>
 <?php
 }
 
@@ -92,7 +73,7 @@ function altcha_general_section_callback()
     <p>To access the ALTCHA's cloud API, you need an API Key. Visit <a href="https://altcha.org" target="_blank">altcha.org</a> for more information.</p>
 
     <div>
-      <a href="https://altcha.org/docs/api/api_keys/" target="_blank" class="button button-primary">Create a Free API Key &rarr;</a>
+      <a href="https://altcha.org/docs/api/api_keys/" target="_blank" class="button button-primary">Create an API Key &rarr;</a>
     </div>
   <?php
 }
@@ -138,20 +119,18 @@ function altcha_settings_field_callback(array $args)
   $type = $args['type'];
   $name = $args['name'];
   $hint = isset($args['hint']) ? $args['hint'] : null;
-  $attrs = isset($args['attrs']) ? $args['attrs'] : '';
+  $spamfilter = isset($args['spamfilter']) ? $args['spamfilter'] : '';
   $description = isset($args['description']) ? $args['description'] : null;
   $setting = get_option($name);
   $value = isset($setting) ? esc_attr($setting) : '';
-  $checked = "";
   if ($type == "checkbox") {
     $value = 1;
-    $checked = checked(1, $setting, false);
   }
 ?>
-  <input autcomplete="none" class="regular-text" <?php echo $attrs; ?> type="<?php echo $type; ?>" name="<?php echo $name; ?>" id="<?php echo $name; ?>" value="<?php echo $value ?>" <?php echo $checked ?>>
-  <label class="description" for="<?php echo $name; ?>"><?php echo $description ?></label>
+  <input autcomplete="none" class="regular-text" <?php echo $spamfilter === true ? ' data-spamfilter' : ''; ?> type="<?php echo esc_attr($type); ?>" name="<?php echo esc_attr($name); ?>" id="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($value) ?>" <?php $type == "checkbox" ? checked(1, $setting, true) : "" ?>>
+  <label class="description" for="<?php echo esc_attr($name); ?>"><?php echo esc_html($description); ?></label>
   <?php if ($hint) { ?>
-  <div style="opacity:0.7;font-size:85%;margin-top:3px"><?php echo $hint; ?></div>
+  <div style="opacity:0.7;font-size:85%;margin-top:3px"><?php echo esc_html($hint); ?></div>
   <?php } ?>
 <?php
 }
@@ -167,19 +146,19 @@ function altcha_settings_select_callback(array $args)
   $setting = get_option($name);
   $value = isset($setting) ? esc_attr($setting) : '';
 ?>
-  <select name="<?php echo $name; ?>" id="<?php echo $name; ?>" <?php echo $disabled === true ? ' disabled' : ''; ?>>
+  <select name="<?php echo esc_attr($name); ?>" id="<?php echo esc_attr($name); ?>" <?php echo $disabled === true ? ' disabled' : ''; ?>>
   <?php
     foreach ( $options as $opt_key => $opt_value ) {
       echo '<option value="' . esc_attr( $opt_key ) . '" '
         . (in_array($opt_key, $spamfilter_options) ? ' data-spamfilter ' : '')
         . selected($value, $opt_key, false )
-        . '>' . esc_html__($opt_value) . '</option>';
+        . '>' . esc_html($opt_value) . '</option>';
     }
   ?>
   </select>
-  <label class="description" for="<?php echo $name; ?>"><?php echo $description ?></label>
+  <label class="description" for="<?php echo esc_attr($name); ?>"><?php echo esc_html($description) ?></label>
   <?php if ($hint) { ?>
-  <div style="opacity:0.7;font-size:85%;margin-top:3px"><?php echo $hint; ?></div>
+  <div style="opacity:0.7;font-size:85%;margin-top:3px"><?php echo esc_html($hint); ?></div>
   <?php } ?>
 <?php
 }

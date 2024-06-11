@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if (altcha_plugin_active('forminator')) {
   add_action(
     'forminator_render_button_markup',
@@ -27,14 +29,14 @@ if (altcha_plugin_active('forminator')) {
         if ($plugin->spam_filter_check($_POST) === false) {
           return [
             'can_submit' => false,
-            'error' => __(AltchaPlugin::$message_cannot_submit, "altcha"),
+            'error' => __('Cannot submit your message.', "altcha"),
           ];
         }
       } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-        if ($plugin->verify($_POST['altcha']) === false) {
+        if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
           return [
             'can_submit' => false,
-            'error' => __(AltchaPlugin::$message_cannot_submit, "altcha"),
+            'error' => __('Cannot submit your message.', "altcha"),
           ];
         }
       }
