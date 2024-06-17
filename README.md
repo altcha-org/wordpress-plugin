@@ -10,7 +10,7 @@ Website: https://altcha.org
 
 ## Status
 
-Use with caution, this plugin is new and the ALTCHA API is currently in public beta, that includes the Spam Filter.
+Use with caution, this plugin is new and the ALTCHA API is currently in public beta, that includes the [Spam Filter](https://altcha.org/anti-spam).
 
 Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpress-plugin/issues).
 

@@ -2,8 +2,8 @@
 Tags: altcha, captcha, spam, anti-spam, anti-bot, antispam, recaptcha, hcaptcha, gdpr
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 0.1.5
-Stable tag: 0.1.5
+Version: 0.1.6
+Stable tag: 0.1.6
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6.5
@@ -22,7 +22,7 @@ Enjoying ALTCHA? Show your support by starring us on GitHub: https://github.com/
 
 == Spam Filter ==
 
-ALTCHA’s Spam Filter introduces a distinctive spam-detection feature enabling efficient classification of text and other information, empowering you to distinguish spam from legitimate messages.
+ALTCHA’s [Spam Filter](https://altcha.org/anti-spam) introduces a distinctive spam-detection feature enabling efficient classification of text and other information, empowering you to distinguish spam from legitimate messages.
 
 As a GDPR-compliant alternative to Akismet, this feature seamlessly integrates with the plugin for effortless activation.
 
@@ -79,6 +79,9 @@ All source code for the plugin, and the ALTCHA widget is available on GitHub. In
 1. Friction-less Captcha without puzzles
 
 == Changelog ==
+
+= 0.1.6 =
+* Widget updated to 0.5.1
 
 = 0.1.5 =
 * Fixes requested by Plugin Directory review
