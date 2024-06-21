@@ -2,6 +2,10 @@
   margin-bottom: 1rem !important;
 }
 
+.forminator-pagination--content + .altcha-widget-wrap {
+  margin-top: 1.5rem !important;
+}
+
 .altcha-widget-wrap .altcha-main {
   line-height: 1;
 }

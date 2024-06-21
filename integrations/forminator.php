@@ -6,15 +6,16 @@ if (altcha_plugin_active('forminator')) {
   add_action(
     'forminator_render_button_markup',
     function ($html) {
-      $plugin = AltchaPlugin::$instance;
-      $mode = $plugin->get_integration_forminator();
-      if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-        altcha_enqueue_scripts();
-        altcha_enqueue_styles();
-        $elements = $plugin->render_widget($mode, true);
-        return str_replace('<button ', $elements . '<button ', $html);
-      }
-      return $html;
+      return altcha_forminator_render_widget($html);
+    },
+    10,
+    2
+  );
+
+  add_action(
+    'forminator_render_fields_markup',
+    function ($html) {
+      return altcha_forminator_render_widget($html);
     },
     10,
     2
@@ -45,4 +46,17 @@ if (altcha_plugin_active('forminator')) {
     10,
     3
   );
+}
+
+function altcha_forminator_render_widget($html)
+{
+  $plugin = AltchaPlugin::$instance;
+  $mode = $plugin->get_integration_forminator();
+  if ($mode === "captcha" || $mode === "captcha_spamfilter") {
+    altcha_enqueue_scripts();
+    altcha_enqueue_styles();
+    $elements = $plugin->render_widget($mode, true);
+    return str_replace('<button ', $elements . '<button ', $html);
+  }
+  return $html;
 }
