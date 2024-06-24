@@ -25,6 +25,14 @@ The plugin has been submitted to the directory, it's currently under review.
 * WordPress Comments
 * Custom HTML (with a short code `[altcha]`)
 
+## Floating UI
+
+The plugin supports the [Floating UI](https://altcha.org/docs/floating-ui/) but with known limitations:
+
+Currently the Floating UI does not work with:
+
+- Forminator with multi-step forms
+
 ## Installation
 
 1. Download the `.zip` from the [Releases](https://github.com/altcha-org/wordpress-plugin/releases).

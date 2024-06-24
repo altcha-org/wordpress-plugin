@@ -38,6 +38,10 @@ class AltchaPlugin
 
   public static $option_auto = "altcha_auto";
 
+  public static $option_floating = "altcha_floating";
+
+  public static $option_delay = "altcha_delay";
+
   public static $option_language = "altcha_language";
 
   public static $option_hidefooter = "altcha_hidefooter";
@@ -125,6 +129,16 @@ class AltchaPlugin
   public function get_auto()
   {
     return trim(get_option(AltchaPlugin::$option_auto));
+  }
+
+  public function get_floating()
+  {
+    return trim(get_option(AltchaPlugin::$option_floating));
+  }
+
+  public function get_delay()
+  {
+    return trim(get_option(AltchaPlugin::$option_delay));
   }
 
   public function get_integration_contact_form_7()
@@ -323,6 +337,8 @@ class AltchaPlugin
     $challengeurl = $this->get_challengeurl();
     $api = $this->get_api();
     $api_key = $this->get_api_key();
+    $floating = $this->get_floating();
+    $delay = $this->get_delay();
     $can_hide_branding = $api === 'selfhosted' || str_starts_with($api_key, 'key_');
     $hidelogo = $can_hide_branding && $this->get_hidelogo();
     $hidefooter = $can_hide_branding && $this->get_hidefooter();
@@ -335,6 +351,12 @@ class AltchaPlugin
     );
     if ($auto) {
       $attrs['auto'] = $auto;
+    }
+    if ($floating) {
+      $attrs['floating'] = 'auto';
+    }
+    if ($delay) {
+      $attrs['delay'] = '1500';
     }
     if ($hidelogo) {
       $attrs['hidelogo'] = '1';

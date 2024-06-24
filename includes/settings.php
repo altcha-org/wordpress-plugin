@@ -64,6 +64,16 @@ if (is_admin()) {
 
     register_setting(
       'altcha_options',
+      AltchaPlugin::$option_floating
+    );
+
+    register_setting(
+      'altcha_options',
+      AltchaPlugin::$option_delay
+    );
+
+    register_setting(
+      'altcha_options',
       AltchaPlugin::$option_integration_contact_form_7
     );
 
@@ -272,6 +282,34 @@ if (is_admin()) {
           "onfocus" => "On form focus",
           "onsubmit" => "On form submit",
         )
+      )
+    );
+
+    add_settings_field(
+      'altcha_settings_floating_field',
+      __('Floating UI', 'altcha-spam-protection'),
+      'altcha_settings_field_callback',
+      'altcha_admin',
+      'altcha_widget_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_floating,
+        "description" => "Yes",
+        "hint" => "Enable Floating UI.",
+        "type" => "checkbox"
+      )
+    );
+
+    add_settings_field(
+      'altcha_settings_delay_field',
+      __('Delay', 'altcha-spam-protection'),
+      'altcha_settings_field_callback',
+      'altcha_admin',
+      'altcha_widget_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_delay,
+        "description" => "Yes",
+        "hint" => "Add a delay of 1.5 seconds to verification.",
+        "type" => "checkbox"
       )
     );
 
