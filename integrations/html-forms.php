@@ -8,10 +8,13 @@ if (altcha_plugin_active('html-forms')) {
     function ($html) {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_html_forms();
+      if (!empty($mode)) {
+        $html = str_replace('</form>', wp_nonce_field('altcha_verification', '_altchanonce') . '</form>', $html);
+      }
       if ($mode === "captcha" || $mode === "captcha_spamfilter") {
         altcha_enqueue_scripts();
         altcha_enqueue_styles();
-        return str_replace('</form>', $plugin->render_widget($mode) . '</form>', $html);
+        return str_replace('</form>', wp_kses($plugin->render_widget($mode), AltchaPlugin::$html_espace_allowed_tags) . '</form>', $html);
       }
       return $html;
     }
@@ -22,13 +25,16 @@ if (altcha_plugin_active('html-forms')) {
     function ($error_code, $form, $data) {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_html_forms();
-      if ($mode === "spamfilter") {
-        if ($plugin->spam_filter_check($_POST) === false) {
-          return "altcha_spam";
-        }
-      } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-        if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
-          return "altcha_invalid";
+      if (!empty($mode) && wp_verify_nonce($_POST['_altchanonce'], 'altcha_verification') !== false) {
+        if ($mode === "spamfilter") {
+          if ($plugin->spam_filter_check($plugin->sanitize_data($_POST)) === false) {
+            return "altcha_spam";
+          }
+        } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {
+          $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
+          if ($plugin->verify($altcha ) === false) {
+            return "altcha_invalid";
+          }
         }
       }
       return $error_code;
@@ -40,14 +46,14 @@ if (altcha_plugin_active('html-forms')) {
   add_filter(
     'hf_form_message_altcha_invalid',
     function ($message) {
-      return __('Cannot submit your message.', "altcha");
+      return __('Cannot submit your message.', 'altcha-spam-protection');
     }
   );
 
   add_filter(
     'hf_form_message_altcha_spam',
     function ($message) {
-      return __('Cannot submit your message.', "altcha");
+      return __('Cannot submit your message.', 'altcha-spam-protection');
     }
   );
 }

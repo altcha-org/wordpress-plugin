@@ -26,19 +26,32 @@ if (altcha_plugin_active('forminator')) {
     function ($can_show, $id, $form_settings) {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_forminator();
-      if ($mode === "spamfilter") {
-        if ($plugin->spam_filter_check($_POST) === false) {
-          return [
-            'can_submit' => false,
-            'error' => __('Cannot submit your message.', "altcha"),
-          ];
-        }
-      } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-        if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
-          return [
-            'can_submit' => false,
-            'error' => __('Cannot submit your message.', "altcha"),
-          ];
+      if (!empty($mode) && wp_verify_nonce($_REQUEST['forminator_nonce'], 'forminator_submit_form') !== false) {
+        if ($mode === "spamfilter") {
+          $ignore_fields = array(
+            'referer_url' => true,
+            'forminator_nonce' => true,
+            'form_id' => true,
+            'page_id' => true,
+            'form_type' => true,
+            'current_url' => true,
+            'render_id' => true,
+            'action' => true,
+          );
+          if ($plugin->spam_filter_check($plugin->sanitize_data($_POST), null, $ignore_fields) === false) {
+            return [
+              'can_submit' => false,
+              'error' => __('Cannot submit your message.', 'altcha-spam-protection'),
+            ];
+          }
+        } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {
+          $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
+          if ($plugin->verify($altcha) === false) {
+            return [
+              'can_submit' => false,
+              'error' => __('Cannot submit your message.', 'altcha-spam-protection'),
+            ];
+          }
         }
       }
       return $can_show;
@@ -55,7 +68,7 @@ function altcha_forminator_render_widget($html)
   if ($mode === "captcha" || $mode === "captcha_spamfilter") {
     altcha_enqueue_scripts();
     altcha_enqueue_styles();
-    $elements = $plugin->render_widget($mode, true);
+    $elements = wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);
     return str_replace('<button ', $elements . '<button ', $html);
   }
   return $html;

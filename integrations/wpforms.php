@@ -8,10 +8,13 @@ if (altcha_plugin_active('wpforms')) {
     function () {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_wpforms();
+      if (!empty($mode)) {
+        echo wp_kses(wp_nonce_field('altcha_verification', '_altchanonce'), AltchaPlugin::$html_espace_allowed_tags);
+      }
       if ($mode === "captcha" || $mode === "captcha_spamfilter") {
         altcha_enqueue_scripts();
         altcha_enqueue_styles();
-        echo AltchaPlugin::$instance->render_widget($mode, true);
+        echo wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);
       }
     },
     10,
@@ -23,13 +26,29 @@ if (altcha_plugin_active('wpforms')) {
     function ($fields, $entry, $form_data) {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_wpforms();
-      if ($mode === "spamfilter") {
-        if ($plugin->spam_filter_check($_POST) === false) {
-          wpforms()->process->errors[$form_data['id']]['header'] = esc_html__('Cannot submit your message.', 'altcha-spam-protection');
-        }
-      } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-        if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
-          wpforms()->process->errors[$form_data['id']]['header'] = esc_html__('Cannot submit your message.', 'altcha-spam-protection');
+      if (!empty($mode) && wp_verify_nonce($_POST['_altchanonce'], 'altcha_verification') !== false) {
+        if ($mode === "spamfilter") {
+          $ignore_fields = array(
+            'wpforms[id]' => true,
+            'wpforms[nonce]' => true,
+            'wpforms[post_id]' => true,
+            'wpforms[submit]' => true,
+            'wpforms[token]' => true,
+            'action' => true,
+            'page_title' => true,
+            'page_url' => true,
+            'page_id' => true,
+            'start_timestamp' => true,
+            'end_timestamp' => true,
+          );
+          if ($plugin->spam_filter_check($plugin->sanitize_data($_POST), null, $ignore_fields) === false) {
+            wpforms()->process->errors[$form_data['id']]['header'] = esc_html__('Cannot submit your message.', 'altcha-spam-protection');
+          }
+        } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {
+          $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
+          if ($plugin->verify($altcha) === false) {
+            wpforms()->process->errors[$form_data['id']]['header'] = esc_html__('Cannot submit your message.', 'altcha-spam-protection');
+          }
         }
       }
     },

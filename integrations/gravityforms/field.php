@@ -50,12 +50,12 @@ class ALTCHA_GFForms_Field extends GF_Field
 		if ($this->is_form_editor()) {
 			$widget_html = '<div style="display:flex;gap:1rem;border: 1px solid lightgray;max-width:260px;padding: 1em;border-radius:4px;font-size:80%">'
 				. '<div><span class="dashicons-before dashicons-superhero"></span></div>'
-				. '<div><span>' . __("ALTCHA placeholder", "altcha") . '</span></div>'
+				. '<div><span>' . __("ALTCHA placeholder", 'altcha-spam-protection') . '</span></div>'
 				. '</div>';
 		} else {
 			altcha_enqueue_scripts();
       altcha_enqueue_styles();
-			$widget_html = $plugin->render_widget($mode);
+			$widget_html = wp_kses($plugin->render_widget($mode), AltchaPlugin::$html_espace_allowed_tags);
 		}
 		return sprintf("<div class='ginput_container ginput_container_%s gfield--type-html'>%s</div>", $this->type, $widget_html);
 	}
@@ -73,10 +73,13 @@ class ALTCHA_GFForms_Field extends GF_Field
 		}
 		$plugin = AltchaPlugin::$instance;
 		$mode = $plugin->get_integration_gravityforms();
-		if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-			if ($plugin->verify(altcha_get_sanitized_solution_from_post()) === false) {
-				$this->failed_validation  = true;
-				$this->validation_message = __('Cannot submit your message.', "altcha");
+    if (!empty($mode) && wp_verify_nonce($_POST['_altchanonce'], 'altcha_verification') !== false) {
+			if ($mode === "captcha" || $mode === "captcha_spamfilter") {
+        $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
+				if ($plugin->verify($altcha) === false) {
+					$this->failed_validation  = true;
+					$this->validation_message = __('Cannot submit your message.', 'altcha-spam-protection');
+				}
 			}
 		}
 	}

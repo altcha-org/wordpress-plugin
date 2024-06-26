@@ -1,6 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH')) exit;
 
 class AltchaPlugin
 {
@@ -67,6 +67,30 @@ class AltchaPlugin
   public static $option_integration_wordpress_comments = "altcha_integration_wordpress_comments";
 
   public static $option_integration_wpforms = "altcha_integration_wpforms";
+
+  public static $html_espace_allowed_tags = array(
+    'altcha-widget' => array(
+      'challengeurl' => array(),
+      'strings' => array(),
+      'auto' => array(),
+      'floating' => array(),
+      'delay' => array(),
+      'hidelogo' => array(),
+      'hidefooter' => array(),
+      'blockspam' => array(),
+      'spamfilter' => array(),
+    ),
+    'div' => array(
+      'class' => array(),
+    ),
+    'input' => array(
+      'id' => array(),
+      'name' => array(),
+      'type' => array(),
+      'value' => array(),
+    ),
+    'noscript' => array(),
+  );
 
   public $spamfilter_result = null;
 
@@ -258,6 +282,7 @@ class AltchaPlugin
     if ($verified) {
       $this->spamfilter_result = array();
       parse_str($data->verificationData, $this->spamfilter_result);
+      return $this->spamfilter_result['classification'] !== 'BAD';
     }
     return $verified;
   }
@@ -380,7 +405,7 @@ class AltchaPlugin
       if (is_bool($attrs[$key])) {
         return $attrs[$key] ? $key : '';
       }
-      return $key . '="' . esc_attr($attrs[$key]) . '"';
+      return esc_attr($key) . '="' . esc_attr($attrs[$key]) . '"';
     }, array_keys($attrs)));
     $html =
       "<altcha-widget "
@@ -395,14 +420,14 @@ class AltchaPlugin
     return $html;
   }
 
-  public function spam_filter_check($data, $ip = null)
+  public function spam_filter_check($data, $ip = null, $ignore_fields = array())
   {
     if ($ip === null) {
       $ip = $this->get_ip_address();
     }
     return $this->spam_filter_call(array(
       'ipAddress' => $ip,
-      'fields' => $this->remove_private_keys($data),
+      'fields' => $this->remove_private_keys($data, $ignore_fields),
     ));
   }
 
@@ -431,15 +456,45 @@ class AltchaPlugin
     return false;
   }
 
-  function remove_private_keys($array)
+  function remove_private_keys($array, $ignore_fields = array())
   {
-    $filtered = [];
+    $filtered = array();
     foreach ($array as $key => $value) {
-      if (strpos($key, '_') !== 0) {
+      if (strpos($key, '_') !== 0 && !isset($ignore_fields[$key])) {
         $filtered[$key] = $value;
       }
     }
     return $filtered;
+  }
+
+  function sanitize_data($post)
+  {
+    $data = $this->flatten_post($post);
+    foreach ($data as $key => $value) {
+      $data[$key] = sanitize_text_field($value);
+    }
+    return $data;
+  }
+
+  function flatten_post($post_data, $prefix = '')
+  {
+    $result = array();
+    foreach ($post_data as $key => $value) {
+      if (is_array($value)) {
+        if ($prefix == '') {
+          $result = $result + $this->flatten_post($value, $prefix . $key);
+        } else {
+          $result = $result + $this->flatten_post($value, $prefix . '[' . $key . ']');
+        }
+      } else {
+        if ($prefix == '') {
+          $result[$prefix . $key . ''] = $value;
+        } else {
+          $result[$prefix . '[' . $key . ']' . ''] = $value;
+        }
+      }
+    }
+    return $result;
   }
 }
 
