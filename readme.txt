@@ -51,6 +51,10 @@ Note: The Spam Filter requires ALTCHA’s SaaS. [Create an API Key](https://altc
 2. Activate the plugin through the 'Plugins' menu in WordPress  
 3. Review the settings and enable the your integrations
 
+== REST API ==
+
+This plugin requires the WordPress REST API. If you are using any "Disable REST API" plugins, ensure that the endpoint `/altcha/v1/challenge` is allowed.
+
 == Supported Integrations ==
 
 * Contact Form 7
