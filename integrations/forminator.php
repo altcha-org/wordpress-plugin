@@ -27,24 +27,7 @@ if (altcha_plugin_active('forminator')) {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_forminator();
       if (!empty($mode) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['forminator_nonce'])), 'forminator_submit_form') !== false) {
-        if ($mode === "spamfilter") {
-          $ignore_fields = array(
-            'referer_url' => true,
-            'forminator_nonce' => true,
-            'form_id' => true,
-            'page_id' => true,
-            'form_type' => true,
-            'current_url' => true,
-            'render_id' => true,
-            'action' => true,
-          );
-          if ($plugin->spam_filter_check($plugin->sanitize_data($_POST), null, $ignore_fields) === false) {
-            return [
-              'can_submit' => false,
-              'error' => __('Cannot submit your message.', 'altcha-spam-protection'),
-            ];
-          }
-        } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {
+        if ($mode === "captcha" || $mode === "captcha_spamfilter") {
           $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
           if ($plugin->verify($altcha) === false) {
             return [

@@ -365,7 +365,6 @@ if (is_admin()) {
             "options" => array(
               "" => "Disable",
               "captcha" => "Captcha",
-              "spamfilter" => "Spam Filter",
               "captcha_spamfilter" => "Captcha + Spam Filter",
             ),
         )
@@ -387,7 +386,6 @@ if (is_admin()) {
             "options" => array(
               "" => "Disable",
               "captcha" => "Captcha",
-              "spamfilter" => "Spam Filter",
               "captcha_spamfilter" => "Captcha + Spam Filter",
             ),
         )
@@ -409,7 +407,6 @@ if (is_admin()) {
             "options" => array(
               "" => "Disable",
               "captcha" => "Captcha",
-              "spamfilter" => "Spam Filter",
               "captcha_spamfilter" => "Captcha + Spam Filter",
             ),
         )
@@ -431,7 +428,6 @@ if (is_admin()) {
             "options" => array(
               "" => "Disable",
               "captcha" => "Captcha",
-              "spamfilter" => "Spam Filter",
               "captcha_spamfilter" => "Captcha + Spam Filter",
             ),
         )
@@ -454,7 +450,6 @@ if (is_admin()) {
             "options" => array(
               "" => "Disable",
               "captcha" => "Captcha",
-              "spamfilter" => "Spam Filter",
               "captcha_spamfilter" => "Captcha + Spam Filter",
             ),
         )
