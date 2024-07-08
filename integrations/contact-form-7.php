@@ -31,7 +31,7 @@ if (altcha_plugin_active('contact-form-7')) {
       $nonceok = true;
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_contact_form_7();
-      if (!empty($mode) && (wp_verify_nonce($_POST['_altchanonce'], 'altcha_verification') !== false || $nonceok)) {
+      if (!empty($mode) && (wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_altchanonce'])), 'altcha_verification') !== false || $nonceok)) {
         if ($mode === "spamfilter") {
           return $plugin->spam_filter_check($plugin->sanitize_data($_POST)) === false;
         } else if ($mode === "captcha" || $mode === "captcha_spamfilter") {

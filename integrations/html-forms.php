@@ -25,7 +25,7 @@ if (altcha_plugin_active('html-forms')) {
     function ($error_code, $form, $data) {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_html_forms();
-      if (!empty($mode) && wp_verify_nonce($_POST['_altchanonce'], 'altcha_verification') !== false) {
+      if (!empty($mode) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_altchanonce'])), 'altcha_verification') !== false) {
         if ($mode === "spamfilter") {
           if ($plugin->spam_filter_check($plugin->sanitize_data($_POST)) === false) {
             return "altcha_spam";

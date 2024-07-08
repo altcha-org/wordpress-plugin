@@ -26,7 +26,7 @@ if (altcha_plugin_active('wpforms')) {
     function ($fields, $entry, $form_data) {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_wpforms();
-      if (!empty($mode) && wp_verify_nonce($_POST['_altchanonce'], 'altcha_verification') !== false) {
+      if (!empty($mode) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_altchanonce'])), 'altcha_verification') !== false) {
         if ($mode === "spamfilter") {
           $ignore_fields = array(
             'wpforms[id]' => true,

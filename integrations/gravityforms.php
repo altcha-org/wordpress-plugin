@@ -28,7 +28,7 @@ if (altcha_plugin_active('gravityforms')) {
       }
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_gravityforms();
-      if (!empty($mode) && wp_verify_nonce($_POST['_altchanonce'], 'altcha_verification') !== false) {
+      if (!empty($mode) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_altchanonce'])), 'altcha_verification') !== false) {
         if ($mode === 'spamfilter') {
           $ip = rgars($form, 'personalData/preventIP') ? GFFormsModel::get_ip() : rgar($entry, 'ip');
           $ignore_fields = array(
