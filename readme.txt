@@ -2,8 +2,8 @@
 Tags: altcha, captcha, spam, anti-spam, anti-bot, antispam, recaptcha, hcaptcha, gdpr
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 0.2.1
-Stable tag: 0.2.1
+Version: 0.3.0
+Stable tag: 0.3.0
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6.5
@@ -83,6 +83,10 @@ All source code for the plugin, and the ALTCHA widget is available on GitHub. In
 1. Friction-less Captcha without puzzles
 
 == Changelog ==
+
+= 0.3.0 =
+* Added nonce sanitization
+* Removed server-side spam filter (required for Plugin Directory)
 
 = 0.2.1 =
 * Fixes requested by Plugin Directory review
