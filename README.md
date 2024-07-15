@@ -7,10 +7,13 @@ ALTCHA offers a free, open-source Captcha alternative, ensuring robust spam prot
 Read more about ALTCHA: https://github.com/altcha-org/altcha
 
 Website: https://altcha.org
+
 WordPress Plugin Directory: https://wordpress.org/plugins/altcha-spam-protection/
 
-Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpress-plugin/issues).
+> [!TIP]
+> ALTCHA is now available in the WordPress Plugin Directory. You can easily install it directly from your WordPress installation.
 
+Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpress-plugin/issues).
 
 ## Supported Integrations
 
