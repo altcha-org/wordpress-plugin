@@ -2,23 +2,21 @@
 Tags: altcha, captcha, spam, anti-spam, anti-bot, antispam, recaptcha, hcaptcha, gdpr
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 0.3.0
-Stable tag: 0.3.0
+Version: 1.0.0
+Stable tag: 1.0.0
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
-ALTCHA offers a free, open-source Captcha alternative, ensuring robust spam protection while respecting user privacy and GDPR compliance.
+[ALTCHA](https://altcha.org) offers a free, open-source Captcha alternative, ensuring robust spam protection while respecting user privacy and GDPR compliance.
 
 == Description ==
  
 ALTCHA provides a free, open-source Captcha alternative utilizing a proof-of-work mechanism to safeguard your website against spam and unwanted content.
 
 Unlike other solutions, ALTCHA is free, open-source, and self-hosted. It operates independently without external services, avoids the use of cookies and fingerprinting, refrains from user tracking, and maintains full compliance with GDPR regulations.
-
-Enjoying ALTCHA? Show your support by starring us on GitHub: https://github.com/altcha-org/altcha
 
 == Spam Filter ==
 
@@ -81,6 +79,9 @@ All source code for the plugin, and the ALTCHA widget is available on GitHub. In
 == Screenshots ==
 
 1. Friction-less Captcha without puzzles
+2. Configuration
+3. Protection on the login page
+3. Protection with WPForms
 
 == Changelog ==
 

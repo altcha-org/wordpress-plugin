@@ -7,12 +7,10 @@ ALTCHA offers a free, open-source Captcha alternative, ensuring robust spam prot
 Read more about ALTCHA: https://github.com/altcha-org/altcha
 
 Website: https://altcha.org
+WordPress Plugin Directory: https://wordpress.org/plugins/altcha-spam-protection/
 
 Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpress-plugin/issues).
 
-## WordPress Plugin Directory Status
-
-The plugin has been submitted to the directory, it's currently under review.
 
 ## Supported Integrations
 
@@ -34,6 +32,8 @@ Currently the Floating UI does not work with:
 - Forminator with multi-step forms
 
 ## Installation
+
+In your WordPress installation, search for "altcha" in the plugin directory and click Install. Alternatively, install the plugin manually:
 
 1. Download the `.zip` from the [Releases](https://github.com/altcha-org/wordpress-plugin/releases).
 2. Upload `altcha` folder to the `/wp-content/plugins/` directory  
