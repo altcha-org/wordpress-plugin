@@ -10,11 +10,11 @@ Tested up to: 6.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
-[ALTCHA](https://altcha.org) offers a free, open-source Captcha alternative, ensuring robust spam protection while respecting user privacy and GDPR compliance.
+ALTCHA offers a free, open-source Captcha alternative, ensuring robust spam protection while respecting user privacy and GDPR compliance.
 
 == Description ==
  
-ALTCHA provides a free, open-source Captcha alternative utilizing a proof-of-work mechanism to safeguard your website against spam and unwanted content.
+[ALTCHA](https://altcha.org) provides a free, open-source Captcha alternative utilizing a proof-of-work mechanism to safeguard your website against spam and unwanted content.
 
 Unlike other solutions, ALTCHA is free, open-source, and self-hosted. It operates independently without external services, avoids the use of cookies and fingerprinting, refrains from user tracking, and maintains full compliance with GDPR regulations.
 
@@ -44,10 +44,17 @@ This plugin operates in two modes, you can select which mode you want in the set
 Note: The Spam Filter requires ALTCHA’s SaaS. [Create an API Key](https://altcha.org/docs/api/api_keys/) to access it.
  
 == Installation ==
+
+Download, install and activate `ALTCHA Spam Protection`.
+
+To use the Spam Filter, [create an API Key](https://altcha.org/docs/api/api_keys/) and configure it in the Settings.
  
-1. Upload `altcha` folder to the `/wp-content/plugins/` directory  
-2. Activate the plugin through the 'Plugins' menu in WordPress  
-3. Review the settings and enable the your integrations
+Alternatively, install the plugin manually:
+
+1. Download the `.zip` from the [Releases](https://github.com/altcha-org/wordpress-plugin/releases).
+2. Upload `altcha` folder to the `/wp-content/plugins/` directory  
+3. Activate the plugin through the 'Plugins' menu in WordPress  
+4. Review the settings and enable the your integrations
 
 == REST API ==
 
