@@ -513,12 +513,13 @@ add_action(
     $route     = 'challenge';
     register_rest_route($namespace, $route, array(
       'methods'   => WP_REST_Server::READABLE,
-      'callback'  => 'altcha_generate_challenge_encpoint'
+      'callback'  => 'altcha_generate_challenge_endpoint',
+      'permission_callback' => '__return_true'
     ));
   }
 );
 
-function altcha_generate_challenge_encpoint()
+function altcha_generate_challenge_endpoint()
 {
   return new WP_REST_Response(AltchaPlugin::$instance->generate_challenge());
 }
