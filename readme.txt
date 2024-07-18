@@ -2,11 +2,11 @@
 Tags: altcha, captcha, spam, anti-spam, anti-bot, antispam, recaptcha, hcaptcha, gdpr
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 1.0.0
-Stable tag: 1.0.0
+Version: 1.1.0
+Stable tag: 1.1.0
 Requires at least: 5.0
 Requires PHP: 7.3
-Tested up to: 6.5
+Tested up to: 6.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -14,13 +14,13 @@ ALTCHA offers a free, open-source Captcha alternative, ensuring robust spam prot
 
 == Description ==
  
-[ALTCHA](https://altcha.org) provides a free, open-source Captcha alternative utilizing a proof-of-work mechanism to safeguard your website against spam and unwanted content.
+[ALTCHA](https://altcha.org) provides a free, open-source Captcha alternative utilizing a proof-of-work mechanism to safeguard your website against spam and unwanted content. Our anti-spam solution ensures robust spam protection without compromising user privacy.
 
 Unlike other solutions, ALTCHA is free, open-source, and self-hosted. It operates independently without external services, avoids the use of cookies and fingerprinting, refrains from user tracking, and maintains full compliance with GDPR regulations.
 
 == Spam Filter ==
 
-ALTCHA’s [Spam Filter](https://altcha.org/anti-spam) introduces a distinctive spam-detection feature enabling efficient classification of text and other information, empowering you to distinguish spam from legitimate messages.
+ALTCHA’s [Spam Filter](https://altcha.org/anti-spam) introduces a distinctive spam-detection feature enabling efficient classification of text and other information, empowering you to distinguish spam from legitimate messages. This anti-spam Captcha feature provides enhanced spam protection for your site.
 
 As a GDPR-compliant alternative to Akismet, this feature seamlessly integrates with the plugin for effortless activation.
 
@@ -88,9 +88,16 @@ All source code for the plugin, and the ALTCHA widget is available on GitHub. In
 1. Friction-less Captcha without puzzles
 2. Configuration
 3. Protection on the login page
-3. Protection with WPForms
+4. Protection with WPForms
+5. Floating UI Captcha
 
 == Changelog ==
+
+= 1.1.0 =
+* Shortcode - support for `language` attribute
+
+= 1.0.0 =
+* Widget updated to 0.6.3
 
 = 0.3.0 =
 * Added nonce sanitization

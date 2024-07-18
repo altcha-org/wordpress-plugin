@@ -7,11 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Description: ALTCHA is a free, open-source CAPTCHA alternative that offers robust protection without using cookies, ensuring full GDPR compliance by design. It also provides invisible anti-spam and anti-bot protection through ALTCHA's API.
  * Author: Altcha.org
  * Author URI: https://altcha.org
- * Version: 1.0.0
- * Stable tag: 1.0.0
+ * Version: 1.1.0
+ * Stable tag: 1.1.0
  * Requires at least: 5.0
  * Requires PHP: 7.3
- * Tested up to: 6.5
+ * Tested up to: 6.6
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html  
  */
@@ -82,11 +82,12 @@ add_shortcode(
   'altcha',
   function ($attrs) {
     $default = array(
+      'language' => null,
       'mode' => 'captcha',
     );
     $a = shortcode_atts($default, $attrs);
     $plugin = AltchaPlugin::$instance;
-    return wp_kses($plugin->render_widget($a['mode']), AltchaPlugin::$html_espace_allowed_tags);
+    return wp_kses($plugin->render_widget($a['mode'], true, $a['language']), AltchaPlugin::$html_espace_allowed_tags);
   }
 );
 

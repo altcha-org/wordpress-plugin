@@ -242,9 +242,11 @@ class AltchaPlugin
     return "https://$api.altcha.org/api/v1/challenge?apiKey=$api_key";
   }
 
-  public function get_translations()
+  public function get_translations($language = null)
   {
-    $language = $this->get_language();
+    if ($language === null) {
+      $language = $this->get_language();
+    }
     return ALTCHA_VERSION_TRANSLATIONS[$language] ?: ALTCHA_VERSION_TRANSLATIONS["en"];
   }
 
@@ -357,7 +359,7 @@ class AltchaPlugin
     return $response;
   }
 
-  public function get_widget_attrs($mode)
+  public function get_widget_attrs($mode, $language = null)
   {
     $challengeurl = $this->get_challengeurl();
     $api = $this->get_api();
@@ -369,7 +371,7 @@ class AltchaPlugin
     $hidefooter = $can_hide_branding && $this->get_hidefooter();
     $blockspam = $this->get_blockspam();
     $auto = $this->get_auto();
-    $strings = wp_json_encode($this->get_translations());
+    $strings = wp_json_encode($this->get_translations($language));
     $attrs = array(
       'challengeurl' => $challengeurl,
       'strings' => $strings,
@@ -398,9 +400,9 @@ class AltchaPlugin
     return $attrs;
   }
 
-  public function render_widget($mode, $wrap = false)
+  public function render_widget($mode, $wrap = false, $language = null)
   {
-    $attrs = $this->get_widget_attrs($mode);
+    $attrs = $this->get_widget_attrs($mode, $language);
     $attributes = join(' ', array_map(function ($key) use ($attrs) {
       if (is_bool($attrs[$key])) {
         return $attrs[$key] ? $key : '';
