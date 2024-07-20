@@ -52,7 +52,7 @@ function altcha_forminator_render_widget($html)
     altcha_enqueue_scripts();
     altcha_enqueue_styles();
     $elements = wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);
-    return str_replace('<button ', $elements . '<button ', $html);
+    return str_replace('<button class="forminator-button ', $elements . '<button class="forminator-button ', $html);
   }
   return $html;
 }
