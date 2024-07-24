@@ -74,6 +74,11 @@ if (is_admin()) {
 
     register_setting(
       'altcha_options',
+      AltchaPlugin::$option_wp_api_prefix
+    );
+
+    register_setting(
+      'altcha_options',
       AltchaPlugin::$option_integration_contact_form_7
     );
 
@@ -338,6 +343,19 @@ if (is_admin()) {
         "description" => "Yes",
         "hint" => "Hide Powered by ALTCHA. Not available with Free API Keys.",
         "type" => "checkbox"
+      )
+    );
+
+    add_settings_field(
+      'altcha_settings_wp_api_prefix_field',
+      __('REST API prefix', 'altcha-spam-protection'),
+      'altcha_settings_field_callback',
+      'altcha_admin',
+      'altcha_widget_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_wp_api_prefix,
+        "hint" => "Override REST API prefix for self-hosted mode (default: wp-json).",
+        "type" => "text"
       )
     );
 

@@ -48,6 +48,8 @@ class AltchaPlugin
 
   public static $option_hidelogo = "altcha_hidelogo";
 
+  public static $option_wp_api_prefix = "altcha_wp_api_prefix";
+
   public static $option_integration_contact_form_7 = "altcha_integration_contact_form_7";
 
   public static $option_integration_custom = "altcha_integration_custom";
@@ -92,6 +94,8 @@ class AltchaPlugin
     'noscript' => array(),
   );
 
+  public static $hostname = null;
+
   public $spamfilter_result = null;
 
   public function init()
@@ -103,6 +107,8 @@ class AltchaPlugin
     if (defined('ALTCHA_WIDGET_VERSION')) {
       AltchaPlugin::$widget_version = ALTCHA_WIDGET_VERSION;
     }
+    $url = wp_parse_url(get_site_url());
+    AltchaPlugin::$hostname = $url['host'] . ($url['port'] ? ':' . $url['port'] : '');
   }
 
   public function get_api()
@@ -163,6 +169,11 @@ class AltchaPlugin
   public function get_delay()
   {
     return trim(get_option(AltchaPlugin::$option_delay));
+  }
+
+  public function get_wp_api_prefix()
+  {
+    return trim(get_option(AltchaPlugin::$option_wp_api_prefix));
   }
 
   public function get_integration_contact_form_7()
@@ -236,7 +247,11 @@ class AltchaPlugin
     $api = $this->get_api();
     if ($api === "selfhosted") {
       $base_url = get_site_url();
-      return "$base_url/wp-json/altcha/v1/challenge";
+      $prefix = $this->get_wp_api_prefix();
+      if (empty($prefix)) {
+        $prefix = "wp-json";
+      }
+      return "$base_url/$prefix/altcha/v1/challenge";
     }
     $api_key = $this->get_api_key();
     return "https://$api.altcha.org/api/v1/challenge?apiKey=$api_key";

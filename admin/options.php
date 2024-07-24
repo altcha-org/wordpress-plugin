@@ -89,6 +89,8 @@ function altcha_general_section_callback()
     <div>
       <a href="https://altcha.org/docs/api/api_keys/" target="_blank" class="button button-primary">Create an API Key &rarr;</a>
     </div>
+
+    <p>Your domain name for the API Key: <b><?php echo esc_html(AltchaPlugin::$hostname); ?></b></p>
   <?php
 }
 
