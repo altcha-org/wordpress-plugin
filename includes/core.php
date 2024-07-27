@@ -108,7 +108,7 @@ class AltchaPlugin
       AltchaPlugin::$widget_version = ALTCHA_WIDGET_VERSION;
     }
     $url = wp_parse_url(get_site_url());
-    AltchaPlugin::$hostname = $url['host'] . ($url['port'] ? ':' . $url['port'] : '');
+    AltchaPlugin::$hostname = $url['host'] . (isset($url['port']) ? ':' . $url['port'] : '');
   }
 
   public function get_api()
