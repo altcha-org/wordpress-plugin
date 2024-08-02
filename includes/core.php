@@ -54,6 +54,8 @@ class AltchaPlugin
 
   public static $option_integration_custom = "altcha_integration_custom";
 
+  public static $option_integration_elementor = "altcha_integration_elementor";
+
   public static $option_integration_forminator = "altcha_integration_forminator";
 
   public static $option_integration_gravityforms = "altcha_integration_gravityforms";
@@ -84,12 +86,15 @@ class AltchaPlugin
     ),
     'div' => array(
       'class' => array(),
+      'style' => array(),
     ),
     'input' => array(
+      'class' => array(),
       'id' => array(),
       'name' => array(),
       'type' => array(),
       'value' => array(),
+      'style' => array(),
     ),
     'noscript' => array(),
   );
@@ -184,6 +189,11 @@ class AltchaPlugin
   public function get_integration_custom()
   {
     return trim(get_option(AltchaPlugin::$option_integration_custom));
+  }
+
+  public function get_integration_elementor()
+  {
+    return trim(get_option(AltchaPlugin::$option_integration_elementor));
   }
 
   public function get_integration_forminator()

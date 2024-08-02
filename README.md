@@ -18,6 +18,7 @@ Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpre
 ## Supported Integrations
 
 * Contact Form 7
+* Elementor Pro Forms
 * Forminator
 * GravityForms
 * HTML Forms

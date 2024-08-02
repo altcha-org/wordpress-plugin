@@ -89,6 +89,11 @@ if (is_admin()) {
 
     register_setting(
       'altcha_options',
+      AltchaPlugin::$option_integration_elementor
+    );
+
+    register_setting(
+      'altcha_options',
       AltchaPlugin::$option_integration_forminator
     );
 
@@ -376,6 +381,27 @@ if (is_admin()) {
         array(
             "name" => AltchaPlugin::$option_integration_contact_form_7,
             "disabled" => !altcha_plugin_active('contact-form-7'),
+            "spamfilter_options" => array(
+              "spamfilter",
+              "captcha_spamfilter",
+            ),
+            "options" => array(
+              "" => "Disable",
+              "captcha" => "Captcha",
+              "captcha_spamfilter" => "Captcha + Spam Filter",
+            ),
+        )
+    );
+
+    add_settings_field(
+        'altcha_settings_elementor_integration_field',
+        'Elementor Pro Forms',
+        'altcha_settings_select_callback',
+        'altcha_admin',
+        'altcha_integrations_settings_section',
+        array(
+            "name" => AltchaPlugin::$option_integration_elementor,
+            "disabled" => !altcha_plugin_active('elementor'),
             "spamfilter_options" => array(
               "spamfilter",
               "captcha_spamfilter",
