@@ -263,6 +263,25 @@ class AltchaPlugin
     return ALTCHA_VERSION_TRANSLATIONS[$language] ?: ALTCHA_VERSION_TRANSLATIONS["en"];
   }
 
+
+  public function has_active_integrations()
+  {
+    $integrations = array(
+      $this->get_integration_contact_form_7(),
+      $this->get_integration_custom(),
+      $this->get_integration_elementor(),
+      $this->get_integration_forminator(),
+      $this->get_integration_gravityforms(),
+      $this->get_integration_html_forms(),
+      $this->get_integration_wordpress_register(),
+      $this->get_integration_wordpress_login(),
+      $this->get_integration_wordpress_reset_password(),
+      $this->get_integration_wordpress_comments(),
+      $this->get_integration_wpforms(),
+    );
+    return in_array("captcha", $integrations) || in_array("captcha_spamfilter", $integrations) || in_array("shortcode", $integrations);
+  }
+
   public function random_secret()
   {
     return bin2hex(random_bytes(12));

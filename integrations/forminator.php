@@ -49,8 +49,6 @@ function altcha_forminator_render_widget($html)
   $plugin = AltchaPlugin::$instance;
   $mode = $plugin->get_integration_forminator();
   if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-    altcha_enqueue_scripts();
-    altcha_enqueue_styles();
     $elements = wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);
     return str_replace('<button class="forminator-button ', $elements . '<button class="forminator-button ', $html);
   }

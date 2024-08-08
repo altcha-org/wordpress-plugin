@@ -53,8 +53,6 @@ class ALTCHA_GFForms_Field extends GF_Field
 				. '<div><span>' . __("ALTCHA placeholder", 'altcha-spam-protection') . '</span></div>'
 				. '</div>';
 		} else {
-			altcha_enqueue_scripts();
-      altcha_enqueue_styles();
 			$widget_html = wp_kses($plugin->render_widget($mode), AltchaPlugin::$html_espace_allowed_tags);
 		}
 		return sprintf("<div class='ginput_container ginput_container_%s gfield--type-html'>%s</div>", $this->type, $widget_html);

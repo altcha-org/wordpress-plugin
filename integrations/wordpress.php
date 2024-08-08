@@ -150,8 +150,6 @@ add_filter(
 
 function altcha_wordpress_comments_render_widget($mode, $full_width = false)
 {
-  altcha_enqueue_scripts();
-  altcha_enqueue_styles();
   $plugin = AltchaPlugin::$instance;
   echo wp_kses(wp_nonce_field('altcha_verification', '_altchanonce'), AltchaPlugin::$html_espace_allowed_tags);
   echo wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);

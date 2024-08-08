@@ -12,8 +12,6 @@ if (altcha_plugin_active('html-forms')) {
         $html = str_replace('</form>', wp_nonce_field('altcha_verification', '_altchanonce') . '</form>', $html);
       }
       if ($mode === "captcha" || $mode === "captcha_spamfilter") {
-        altcha_enqueue_scripts();
-        altcha_enqueue_styles();
         return str_replace('</form>', wp_kses($plugin->render_widget($mode), AltchaPlugin::$html_espace_allowed_tags) . '</form>', $html);
       }
       return $html;

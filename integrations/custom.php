@@ -8,8 +8,6 @@ add_action(
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_custom();
     if ($mode === 'captcha' || $mode === 'captcha_spamfilter') {
-      altcha_enqueue_scripts();
-      altcha_enqueue_styles();
       wp_enqueue_script(
         'altcha-widget-custom',
         AltchaPlugin::$custom_script_src,
