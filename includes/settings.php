@@ -456,6 +456,7 @@ if (is_admin()) {
               "" => "Disable",
               "captcha" => "Captcha",
               "captcha_spamfilter" => "Captcha + Spam Filter",
+              "shortcode" => "Shortcode",
             ),
         )
     );
