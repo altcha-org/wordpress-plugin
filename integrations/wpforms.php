@@ -8,9 +8,6 @@ if (altcha_plugin_active('wpforms')) {
     function () {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_wpforms();
-      if (!empty($mode)) {
-        echo wp_kses(wp_nonce_field('altcha_verification', '_altchanonce'), AltchaPlugin::$html_espace_allowed_tags);
-      }
       if ($mode === "captcha" || $mode === "captcha_spamfilter") {
         echo wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);
       }
@@ -24,7 +21,7 @@ if (altcha_plugin_active('wpforms')) {
     function ($fields, $entry, $form_data) {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_wpforms();
-      if (!empty($mode) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_altchanonce'])), 'altcha_verification') !== false) {
+      if (!empty($mode)) {
         if ($mode === "captcha" || $mode === "captcha_spamfilter") {
           $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
           if ($plugin->verify($altcha) === false) {

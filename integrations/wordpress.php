@@ -20,7 +20,7 @@ add_action(
   function ($user_login, $user_email, $errors) {
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_register();
-    if (!empty($mode) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_altchanonce'])), 'altcha_verification') !== false) {
+    if (!empty($mode)) {
       $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
       if ($plugin->verify($altcha) === false) {
         return $errors->add(
@@ -56,7 +56,7 @@ add_filter(
     }
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_login();
-    if (!empty($mode) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_altchanonce'])), 'altcha_verification') !== false) {
+    if (!empty($mode)) {
       $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
       if ($plugin->verify($altcha) === false) {
         return new WP_Error("altcha-error", '<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Cannot submit your message.', 'altcha-spam-protection'));
@@ -89,7 +89,7 @@ add_filter(
     }
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_reset_password();
-    if (!empty($mode) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_altchanonce'])), 'altcha_verification') !== false) {
+    if (!empty($mode)) {
       $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
       if ($plugin->verify($altcha) === false) {
         wp_die('<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Cannot submit your message.', 'altcha-spam-protection'));
@@ -136,7 +136,7 @@ add_filter(
     }
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_comments();
-    if (!empty($mode) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_altchanonce'])), 'altcha_verification') !== false) {
+    if (!empty($mode)) {
       $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
       if ($plugin->verify($altcha) === false) {
         wp_die('<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Cannot submit your message.', 'altcha-spam-protection'));
@@ -153,6 +153,5 @@ function altcha_wordpress_comments_render_widget($mode, $full_width = false)
   $plugin = AltchaPlugin::$instance;
   altcha_enqueue_scripts();
   altcha_enqueue_styles();
-  echo wp_kses(wp_nonce_field('altcha_verification', '_altchanonce'), AltchaPlugin::$html_espace_allowed_tags);
   echo wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);
 }
