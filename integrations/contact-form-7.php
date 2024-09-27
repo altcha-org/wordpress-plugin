@@ -14,9 +14,9 @@ if (altcha_plugin_active('contact-form-7')) {
         $input = '<input class="wpcf7-form-control wpcf7-submit ';
         $button = '<button class="wpcf7-form-control wpcf7-submit ';
         $widget = wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);
-        if (str_contains($elements, $input)) {
+        if (strpos($elements, $input) !== false) {
           $elements = str_replace($input, $widget . $input, $elements);
-        } else if (str_contains($elements, $button)) {
+        } else if (strpos($elements, $button) !== false) {
           $elements = str_replace($button, $widget . $button, $elements);
         } else {
           $elements .= $widget;
