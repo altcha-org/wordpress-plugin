@@ -95,7 +95,7 @@ All source code for the plugin, and the ALTCHA widget is available on GitHub. In
 == Changelog ==
 
 = 1.9.1 =
-* PHP 8 support (replace str_contains by strpos) [#19]
+* PHP 7 support (replace str_contains by strpos) [#19]
 
 = 1.9.0 =
 * Widget updated to version 1.0.0
