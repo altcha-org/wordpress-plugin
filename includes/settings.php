@@ -1,12 +1,35 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (! defined('ABSPATH')) exit;
 
 if (is_admin()) {
   add_action('admin_init', 'altcha_settings_init');
 
+  function active_plugins()
+  {
+    $plugins = array(
+      'contact-form-7',
+      'elementor',
+      'forminator',
+      'gravityforms',
+      'html-forms',
+      'wpforms',
+    );
+
+    foreach ($plugins as $plugin) {
+      if (altcha_plugin_active($plugin)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   function altcha_settings_init()
   {
+
+    $plugins_active = false;
+
     register_setting(
       'altcha_options',
       AltchaPlugin::$option_api
@@ -355,153 +378,155 @@ if (is_admin()) {
     );
 
     add_settings_field(
-        'altcha_settings_contact_form_7_integration_field',
-        'Contact Form 7',
-        'altcha_settings_select_callback',
-        'altcha_admin',
-        'altcha_integrations_settings_section',
-        array(
-            "name" => AltchaPlugin::$option_integration_contact_form_7,
-            "disabled" => !altcha_plugin_active('contact-form-7'),
-            "spamfilter_options" => array(
-              "spamfilter",
-              "captcha_spamfilter",
-            ),
-            "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-              "shortcode" => "Shortcode",
-            ),
-        )
+      'altcha_settings_contact_form_7_integration_field',
+      'Contact Form 7',
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_integrations_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_contact_form_7,
+        "disabled" => !altcha_plugin_active('contact-form-7'),
+        "spamfilter_options" => array(
+          "spamfilter",
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => "Disable",
+          "captcha" => "Captcha",
+          "captcha_spamfilter" => "Captcha + Spam Filter",
+          "shortcode" => "Shortcode",
+        ),
+      )
     );
 
     add_settings_field(
-        'altcha_settings_elementor_integration_field',
-        'Elementor Pro Forms',
-        'altcha_settings_select_callback',
-        'altcha_admin',
-        'altcha_integrations_settings_section',
-        array(
-            "name" => AltchaPlugin::$option_integration_elementor,
-            "disabled" => !altcha_plugin_active('elementor'),
-            "spamfilter_options" => array(
-              "spamfilter",
-              "captcha_spamfilter",
-            ),
-            "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-            ),
-        )
+      'altcha_settings_elementor_integration_field',
+      'Elementor Pro Forms',
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_integrations_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_elementor,
+        "disabled" => !altcha_plugin_active('elementor'),
+        "spamfilter_options" => array(
+          "spamfilter",
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => "Disable",
+          "captcha" => "Captcha",
+          "captcha_spamfilter" => "Captcha + Spam Filter",
+        ),
+      )
     );
 
     add_settings_field(
-        'altcha_settings_forminator_integration_field',
-        'Forminator',
-        'altcha_settings_select_callback',
-        'altcha_admin',
-        'altcha_integrations_settings_section',
-        array(
-            "name" => AltchaPlugin::$option_integration_forminator,
-            "disabled" => !altcha_plugin_active('forminator'),
-            "spamfilter_options" => array(
-              "spamfilter",
-              "captcha_spamfilter",
-            ),
-            "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-            ),
-        )
+      'altcha_settings_forminator_integration_field',
+      'Forminator',
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_integrations_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_forminator,
+        "disabled" => !altcha_plugin_active('forminator'),
+        "spamfilter_options" => array(
+          "spamfilter",
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => "Disable",
+          "captcha" => "Captcha",
+          "captcha_spamfilter" => "Captcha + Spam Filter",
+        ),
+      )
     );
 
     add_settings_field(
-        'altcha_settings_gravityforms_integration_field',
-        'Gravity Forms',
-        'altcha_settings_select_callback',
-        'altcha_admin',
-        'altcha_integrations_settings_section',
-        array(
-            "name" => AltchaPlugin::$option_integration_gravityforms,
-            "disabled" => !altcha_plugin_active('gravityforms'),
-            "spamfilter_options" => array(
-              "spamfilter",
-              "captcha_spamfilter",
-            ),
-            "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-            ),
-        )
+      'altcha_settings_gravityforms_integration_field',
+      'Gravity Forms',
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_integrations_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_gravityforms,
+        "disabled" => !altcha_plugin_active('gravityforms'),
+        "spamfilter_options" => array(
+          "spamfilter",
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => "Disable",
+          "captcha" => "Captcha",
+          "captcha_spamfilter" => "Captcha + Spam Filter",
+        ),
+      )
     );
 
     add_settings_field(
-        'altcha_settings_html_forms_integration_field',
-        'HTML Forms',
-        'altcha_settings_select_callback',
-        'altcha_admin',
-        'altcha_integrations_settings_section',
-        array(
-            "name" => AltchaPlugin::$option_integration_html_forms,
-            "disabled" => !altcha_plugin_active('html-forms'),
-            "spamfilter_options" => array(
-              "spamfilter",
-              "captcha_spamfilter",
-            ),
-            "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-              "shortcode" => "Shortcode",
-            ),
-        )
+      'altcha_settings_html_forms_integration_field',
+      'HTML Forms',
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_integrations_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_html_forms,
+        "disabled" => !altcha_plugin_active('html-forms'),
+        "spamfilter_options" => array(
+          "spamfilter",
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => "Disable",
+          "captcha" => "Captcha",
+          "captcha_spamfilter" => "Captcha + Spam Filter",
+          "shortcode" => "Shortcode",
+        ),
+        "default" => active_plugins() ? "" : "captcha"
+      )
     );
 
 
     add_settings_field(
-        'altcha_settings_wpforms_integration_field',
-        'WP Forms',
-        'altcha_settings_select_callback',
-        'altcha_admin',
-        'altcha_integrations_settings_section',
-        array(
-            "name" => AltchaPlugin::$option_integration_wpforms,
-            "disabled" => !altcha_plugin_active('wpforms'),
-            "spamfilter_options" => array(
-              "spamfilter",
-              "captcha_spamfilter",
-            ),
-            "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-            ),
-        )
+      'altcha_settings_wpforms_integration_field',
+      'WP Forms',
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_integrations_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_wpforms,
+        "disabled" => !altcha_plugin_active('wpforms'),
+        "spamfilter_options" => array(
+          "spamfilter",
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => "Disable",
+          "captcha" => "Captcha",
+          "captcha_spamfilter" => "Captcha + Spam Filter",
+        ),
+      )
     );
 
     add_settings_field(
-        'altcha_settings_custom_integration_field',
-        'Custom HTML',
-        'altcha_settings_select_callback',
-        'altcha_admin',
-        'altcha_integrations_settings_section',
-        array(
-            "name" => AltchaPlugin::$option_integration_custom,
-            "hint" => "Use [altcha] shortcode anywhere in your HTML.",
-            "spamfilter_options" => array(
-              "spamfilter",
-              "captcha_spamfilter",
-            ),
-            "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-            ),
-        )
+      'altcha_settings_custom_integration_field',
+      'Custom HTML',
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_integrations_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_custom,
+        "hint" => "Use [altcha] shortcode anywhere in your HTML.",
+        "spamfilter_options" => array(
+          "spamfilter",
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => "Disable",
+          "captcha" => "Captcha",
+          "captcha_spamfilter" => "Captcha + Spam Filter",
+        ),
+        "default" => $plugins_active ? "" : "captcha"
+      )
     );
 
     // Section
@@ -513,79 +538,79 @@ if (is_admin()) {
     );
 
     add_settings_field(
-        'altcha_settings_wordpress_register_integration_field',
-        'Register page',
-        'altcha_settings_select_callback',
-        'altcha_admin',
-        'altcha_wordpress_settings_section',
-        array(
-            "name" => AltchaPlugin::$option_integration_wordpress_register,
-            "spamfilter_options" => array(
-              "captcha_spamfilter",
-            ),
-            "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-            ),
-        )
+      'altcha_settings_wordpress_register_integration_field',
+      'Register page',
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_wordpress_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_wordpress_register,
+        "spamfilter_options" => array(
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => "Disable",
+          "captcha" => "Captcha",
+          "captcha_spamfilter" => "Captcha + Spam Filter",
+        ),
+      )
     );
 
     add_settings_field(
-        'altcha_settings_wordpress_reset_password_integration_field',
-        'Reset password page',
-        'altcha_settings_select_callback',
-        'altcha_admin',
-        'altcha_wordpress_settings_section',
-        array(
-            "name" => AltchaPlugin::$option_integration_wordpress_reset_password,
-            "spamfilter_options" => array(
-              "captcha_spamfilter",
-            ),
-            "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-            ),
-        )
+      'altcha_settings_wordpress_reset_password_integration_field',
+      'Reset password page',
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_wordpress_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_wordpress_reset_password,
+        "spamfilter_options" => array(
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => "Disable",
+          "captcha" => "Captcha",
+          "captcha_spamfilter" => "Captcha + Spam Filter",
+        ),
+      )
     );
 
     add_settings_field(
-        'altcha_settings_wordpress_login_integration_field',
-        'Login page',
-        'altcha_settings_select_callback',
-        'altcha_admin',
-        'altcha_wordpress_settings_section',
-        array(
-            "name" => AltchaPlugin::$option_integration_wordpress_login,
-            "spamfilter_options" => array(
-              "captcha_spamfilter",
-            ),
-            "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-            ),
-        )
+      'altcha_settings_wordpress_login_integration_field',
+      'Login page',
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_wordpress_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_wordpress_login,
+        "spamfilter_options" => array(
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => "Disable",
+          "captcha" => "Captcha",
+          "captcha_spamfilter" => "Captcha + Spam Filter",
+        ),
+      )
     );
 
     add_settings_field(
-        'altcha_settings_wordpress_comments_integration_field',
-        'Comments',
-        'altcha_settings_select_callback',
-        'altcha_admin',
-        'altcha_wordpress_settings_section',
-        array(
-            "name" => AltchaPlugin::$option_integration_wordpress_comments,
-            "spamfilter_options" => array(
-              "captcha_spamfilter",
-            ),
-            "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-            ),
-        )
+      'altcha_settings_wordpress_comments_integration_field',
+      'Comments',
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_wordpress_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_wordpress_comments,
+        "spamfilter_options" => array(
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => "Disable",
+          "captcha" => "Captcha",
+          "captcha_spamfilter" => "Captcha + Spam Filter",
+        ),
+      )
     );
   }
 }
