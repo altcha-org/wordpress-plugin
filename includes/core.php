@@ -555,5 +555,7 @@ add_action(
 
 function altcha_generate_challenge_endpoint()
 {
-  return new WP_REST_Response(AltchaPlugin::$instance->generate_challenge());
+  $resp = new WP_REST_Response(AltchaPlugin::$instance->generate_challenge());
+  $resp->set_headers(array('Cache-Control' => 'no-cache, no-store, max-age=0'));
+  return $resp;
 }
