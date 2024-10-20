@@ -22,6 +22,7 @@ Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpre
 * Forminator
 * GravityForms
 * HTML Forms
+* WPDiscuz
 * WPForms
 * WordPress Login, Register, Password reset
 * WordPress Comments
