@@ -8,7 +8,7 @@ add_action(
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_register();
     if (!empty($mode)) {
-      altcha_wordpress_comments_render_widget($mode, true);
+      altcha_wordpress_comments_render_widget($mode, 'altcha_register');
     }
   },
   10,
@@ -21,7 +21,7 @@ add_action(
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_register();
     if (!empty($mode)) {
-      $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
+      $altcha = isset($_POST['altcha_register']) ? trim(sanitize_text_field($_POST['altcha_register'])) : '';
       if ($plugin->verify($altcha) === false) {
         return $errors->add(
           'altcha_error_message',
@@ -41,7 +41,7 @@ add_action(
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_login();
     if (!empty($mode)) {
-      altcha_wordpress_comments_render_widget($mode, true);
+      altcha_wordpress_comments_render_widget($mode);
     }
   },
   10,
@@ -74,7 +74,7 @@ add_action(
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_reset_password();
     if (!empty($mode)) {
-      altcha_wordpress_comments_render_widget($mode, true);
+      altcha_wordpress_comments_render_widget($mode);
     }
   },
   10,
@@ -135,7 +135,7 @@ add_filter(
       return $comment;
     }
     $plugin = AltchaPlugin::$instance;
-    $mode = $plugin->get_integration_wordpress_comments();
+    $mode = (altcha_plugin_active('wpdiscuz') && $plugin->get_integration_wpdiscuz()) || $plugin->get_integration_wordpress_comments();
     if (!empty($mode)) {
       $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
       if ($plugin->verify($altcha) === false) {
@@ -148,10 +148,10 @@ add_filter(
   1
 );
 
-function altcha_wordpress_comments_render_widget($mode, $full_width = false)
+function altcha_wordpress_comments_render_widget($mode, $name = null)
 {
   $plugin = AltchaPlugin::$instance;
   altcha_enqueue_scripts();
   altcha_enqueue_styles();
-  echo wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);
+  echo wp_kses($plugin->render_widget($mode, true, null, $name), AltchaPlugin::$html_espace_allowed_tags);
 }

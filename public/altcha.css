@@ -14,6 +14,16 @@
   display: block;
 }
 
+.altcha-widget-wrap-wpdiscuz {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 0.5rem;
+}
+
+.altcha-widget-wrap-wpdiscuz > * {
+  min-width: 260px;
+}
+
 .login .altcha:not([data-floating]) {
   --altcha-max-width: 100%;
 }

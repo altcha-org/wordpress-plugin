@@ -124,6 +124,11 @@ if (is_admin()) {
 
     register_setting(
       'altcha_options',
+      AltchaPlugin::$option_integration_wpdiscuz
+    );
+
+    register_setting(
+      'altcha_options',
       AltchaPlugin::$option_integration_wpforms
     );
 
@@ -461,6 +466,26 @@ if (is_admin()) {
         )
     );
 
+    add_settings_field(
+        'altcha_settings_wpdiscuz_integration_field',
+        'WPDiscuz',
+        'altcha_settings_select_callback',
+        'altcha_admin',
+        'altcha_integrations_settings_section',
+        array(
+            "name" => AltchaPlugin::$option_integration_wpdiscuz,
+            "disabled" => !altcha_plugin_active('wpdiscuz'),
+            "spamfilter_options" => array(
+              "spamfilter",
+              "captcha_spamfilter",
+            ),
+            "options" => array(
+              "" => "Disable",
+              "captcha" => "Captcha",
+              "captcha_spamfilter" => "Captcha + Spam Filter",
+            ),
+        )
+    );
 
     add_settings_field(
         'altcha_settings_wpforms_integration_field',

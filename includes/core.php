@@ -68,6 +68,8 @@ class AltchaPlugin
 
   public static $option_integration_wordpress_comments = "altcha_integration_wordpress_comments";
 
+  public static $option_integration_wpdiscuz = "altcha_integration_wpdiscuz";
+
   public static $option_integration_wpforms = "altcha_integration_wpforms";
 
   public static $html_espace_allowed_tags = array(
@@ -81,6 +83,7 @@ class AltchaPlugin
       'hidefooter' => array(),
       'blockspam' => array(),
       'spamfilter' => array(),
+      'name' => array(),
     ),
     'div' => array(
       'class' => array(),
@@ -222,6 +225,11 @@ class AltchaPlugin
   public function get_integration_wordpress_comments()
   {
     return trim(get_option(AltchaPlugin::$option_integration_wordpress_comments));
+  }
+
+  public function get_integration_wpdiscuz()
+  {
+    return trim(get_option(AltchaPlugin::$option_integration_wpdiscuz));
   }
 
   public function get_integration_wpforms()
@@ -391,7 +399,7 @@ class AltchaPlugin
     return $response;
   }
 
-  public function get_widget_attrs($mode, $language = null)
+  public function get_widget_attrs($mode, $language = null, $name = null)
   {
     $challengeurl = $this->get_challengeurl();
     $api = $this->get_api();
@@ -408,6 +416,9 @@ class AltchaPlugin
       'challengeurl' => $challengeurl,
       'strings' => $strings,
     );
+    if ($name) {
+      $attrs['name'] = $name;
+    }
     if ($auto) {
       $attrs['auto'] = $auto;
     }
@@ -432,9 +443,9 @@ class AltchaPlugin
     return $attrs;
   }
 
-  public function render_widget($mode, $wrap = false, $language = null)
+  public function render_widget($mode, $wrap = false, $language = null, $name = null)
   {
-    $attrs = $this->get_widget_attrs($mode, $language);
+    $attrs = $this->get_widget_attrs($mode, $language, $name);
     $attributes = join(' ', array_map(function ($key) use ($attrs) {
       if (is_bool($attrs[$key])) {
         return $attrs[$key] ? $key : '';
