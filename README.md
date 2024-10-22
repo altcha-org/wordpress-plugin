@@ -24,6 +24,7 @@ Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpre
 * HTML Forms
 * WPDiscuz
 * WPForms
+* WP-Members
 * WordPress Login, Register, Password reset
 * WordPress Comments
 * Custom HTML (with a short code `[altcha]`)
