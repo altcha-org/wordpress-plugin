@@ -16,6 +16,8 @@ function altcha_plugin_active($name) {
       return is_plugin_active('contact-form-7/wp-contact-form-7.php');
     case 'wpdiscuz':
       return is_plugin_active('wpdiscuz/class.WpdiscuzCore.php');
+    case 'wpmembers':
+      return is_plugin_active('wp-members/wp-members.php');
     case 'wpforms':
       return is_plugin_active('wpforms/wpforms.php') || is_plugin_active('wpforms-lite/wpforms.php');
     default:
