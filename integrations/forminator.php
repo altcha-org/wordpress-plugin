@@ -26,7 +26,7 @@ if (altcha_plugin_active('forminator')) {
     function ($can_show, $id, $form_settings) {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_forminator();
-      if (!empty($mode) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['forminator_nonce'])), 'forminator_submit_form') !== false) {
+      if (!empty($mode)) {
         if ($mode === "captcha" || $mode === "captcha_spamfilter") {
           $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
           if ($plugin->verify($altcha) === false) {
