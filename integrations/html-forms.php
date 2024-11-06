@@ -26,6 +26,10 @@ if (altcha_plugin_active('html-forms')) {
       $plugin = AltchaPlugin::$instance;
       $mode = $plugin->get_integration_html_forms();
       if (!empty($mode)) {
+        if ($mode === "shortcode" && strpos($form, "<altcha-widget ") === false) {
+          // if the altcha widget is not found in the form markup in shortcode mode, skip verification
+          return $error_code;
+        }
         if ($mode === "captcha" || $mode === "captcha_spamfilter" || $mode === "shortcode") {
           $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
           if ($plugin->verify($altcha ) === false) {
