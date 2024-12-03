@@ -25,7 +25,7 @@ add_action(
       if ($plugin->verify($altcha) === false) {
         return $errors->add(
           'altcha_error_message',
-          '<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Cannot submit your message.', 'altcha-spam-protection')
+          '<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Could not verify you are not a robot.', 'altcha-spam-protection')
         );
       }
     }
@@ -59,7 +59,7 @@ add_filter(
     if (!empty($mode)) {
       $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
       if ($plugin->verify($altcha) === false) {
-        return new WP_Error("altcha-error", '<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Cannot submit your message.', 'altcha-spam-protection'));
+        return new WP_Error("altcha-error", '<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Could not verify you are not a robot.', 'altcha-spam-protection'));
       }
     }
     return $user;
@@ -92,7 +92,7 @@ add_filter(
     if (!empty($mode)) {
       $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
       if ($plugin->verify($altcha) === false) {
-        wp_die('<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Cannot submit your message.', 'altcha-spam-protection'));
+        wp_die('<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Could not verify you are not a robot.', 'altcha-spam-protection'));
       }
     }
     return $val;
@@ -139,7 +139,7 @@ add_filter(
     if (!empty($mode)) {
       $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
       if ($plugin->verify($altcha) === false) {
-        wp_die('<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Cannot submit your message.', 'altcha-spam-protection'));
+        wp_die('<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Could not verify you are not a robot.', 'altcha-spam-protection'));
       }
     }
     return $comment;

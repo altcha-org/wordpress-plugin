@@ -76,7 +76,7 @@ class ALTCHA_GFForms_Field extends GF_Field
         $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
 				if ($plugin->verify($altcha) === false) {
 					$this->failed_validation  = true;
-					$this->validation_message = __('Cannot submit your message.', 'altcha-spam-protection');
+					$this->validation_message = __('Could not verify you are not a robot.', 'altcha-spam-protection');
 				}
 			}
 		}

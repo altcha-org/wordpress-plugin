@@ -46,14 +46,14 @@ if (altcha_plugin_active('html-forms')) {
   add_filter(
     'hf_form_message_altcha_invalid',
     function ($message) {
-      return __('Cannot submit your message.', 'altcha-spam-protection');
+      return __('Could not verify you are not a robot.', 'altcha-spam-protection');
     }
   );
 
   add_filter(
     'hf_form_message_altcha_spam',
     function ($message) {
-      return __('Cannot submit your message.', 'altcha-spam-protection');
+      return __('Could not verify you are not a robot.', 'altcha-spam-protection');
     }
   );
 }
