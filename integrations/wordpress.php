@@ -83,23 +83,26 @@ add_action(
 
 add_filter(
   'lostpassword_post',
-  function ($val) {
+  function ($errors) {
     if (is_user_logged_in()) {
-        return $val;
+      return $errors;
     }
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_reset_password();
     if (!empty($mode)) {
       $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
       if ($plugin->verify($altcha) === false) {
-        wp_die('<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Could not verify you are not a robot.', 'altcha-spam-protection'));
+        $errors->add(
+          'altcha_error_message',
+          '<strong>' . esc_html__('Error', 'altcha-spam-protection') . '</strong> : ' . esc_html__('Could not verify you are not a robot.', 'altcha-spam-protection')
+        );
       }
     }
-    return $val;
+    return $errors;
   },
   10,
   1
-);	
+);
 
 add_action(
   'comment_form_after_fields',
