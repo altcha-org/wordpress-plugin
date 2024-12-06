@@ -25,7 +25,7 @@ if (altcha_plugin_active('wpforms')) {
         if ($mode === "captcha" || $mode === "captcha_spamfilter") {
           $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
           if ($plugin->verify($altcha) === false) {
-            wpforms()->process->errors[$form_data['id']]['header'] = esc_html__('Cannot submit your message.', 'altcha-spam-protection');
+            wpforms()->process->errors[$form_data['id']]['header'] = esc_html__('Could not verify you are not a robot.', 'altcha-spam-protection');
           }
         }
       }

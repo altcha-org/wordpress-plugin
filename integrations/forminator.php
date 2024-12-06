@@ -32,7 +32,7 @@ if (altcha_plugin_active('forminator')) {
           if ($plugin->verify($altcha) === false) {
             return [
               'can_submit' => false,
-              'error' => __('Cannot submit your message.', 'altcha-spam-protection'),
+              'error' => __('Could not verify you are not a robot.', 'altcha-spam-protection'),
             ];
           }
         }
