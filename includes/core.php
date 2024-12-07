@@ -58,6 +58,12 @@ class AltchaPlugin
 
   public static $option_integration_gravityforms = "altcha_integration_gravityforms";
 
+  public static $option_integration_woocommerce_login = "altcha_integration_woocommerce_login";
+
+  public static $option_integration_woocommerce_register = "altcha_integration_woocommerce_register";
+
+  public static $option_integration_woocommerce_reset_password = "altcha_integration_woocommerce_reset_password";
+
   public static $option_integration_html_forms = "altcha_integration_html_forms";
 
   public static $option_integration_wordpress_login = "altcha_integration_wordpress_login";
@@ -202,6 +208,21 @@ class AltchaPlugin
     return trim(get_option(AltchaPlugin::$option_integration_gravityforms));
   }
 
+  public function get_integration_woocommerce_register()
+  {
+    return trim(get_option(AltchaPlugin::$option_integration_woocommerce_register));
+  }
+
+  public function get_integration_woocommerce_reset_password()
+  {
+    return trim(get_option(AltchaPlugin::$option_integration_woocommerce_reset_password));
+  }
+
+  public function get_integration_woocommerce_login()
+  {
+    return trim(get_option(AltchaPlugin::$option_integration_woocommerce_login));
+  }
+
   public function get_integration_html_forms()
   {
     return trim(get_option(AltchaPlugin::$option_integration_html_forms));
@@ -281,6 +302,9 @@ class AltchaPlugin
       $this->get_integration_forminator(),
       $this->get_integration_gravityforms(),
       $this->get_integration_html_forms(),
+      $this->get_integration_woocommerce_register(),
+      $this->get_integration_woocommerce_login(),
+      $this->get_integration_woocommerce_reset_password(),
       $this->get_integration_wordpress_register(),
       $this->get_integration_wordpress_login(),
       $this->get_integration_wordpress_reset_password(),

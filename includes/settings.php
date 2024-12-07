@@ -99,6 +99,21 @@ if (is_admin()) {
 
     register_setting(
       'altcha_options',
+      AltchaPlugin::$option_integration_woocommerce_login
+    );
+
+    register_setting(
+      'altcha_options',
+      AltchaPlugin::$option_integration_woocommerce_register
+    );
+
+    register_setting(
+      'altcha_options',
+      AltchaPlugin::$option_integration_woocommerce_reset_password
+    );
+
+    register_setting(
+      'altcha_options',
       AltchaPlugin::$option_integration_html_forms
     );
 
@@ -498,6 +513,63 @@ if (is_admin()) {
             "disabled" => !altcha_plugin_active('wpforms'),
             "spamfilter_options" => array(
               "spamfilter",
+              "captcha_spamfilter",
+            ),
+            "options" => array(
+              "" => "Disable",
+              "captcha" => "Captcha",
+              "captcha_spamfilter" => "Captcha + Spam Filter",
+            ),
+        )
+    );
+
+    add_settings_field(
+        'altcha_settings_woocommerce_register_integration_field',
+        'WooCommerce register page',
+        'altcha_settings_select_callback',
+        'altcha_admin',
+        'altcha_integrations_settings_section',
+        array(
+            "name" => AltchaPlugin::$option_integration_woocommerce_register,
+            "spamfilter_options" => array(
+              "captcha_spamfilter",
+            ),
+            "options" => array(
+              "" => "Disable",
+              "captcha" => "Captcha",
+              "captcha_spamfilter" => "Captcha + Spam Filter",
+            ),
+        )
+    );
+
+    add_settings_field(
+        'altcha_settings_woocommerce_reset_password_integration_field',
+        'WooCommerce reset password page',
+        'altcha_settings_select_callback',
+        'altcha_admin',
+        'altcha_integrations_settings_section',
+        array(
+            "name" => AltchaPlugin::$option_integration_woocommerce_reset_password,
+            "spamfilter_options" => array(
+              "captcha_spamfilter",
+            ),
+            "options" => array(
+              "" => "Disable",
+              "captcha" => "Captcha",
+              "captcha_spamfilter" => "Captcha + Spam Filter",
+            ),
+        )
+    );
+
+    add_settings_field(
+        'altcha_settings_woocommerce_login_integration_field',
+        'WooCommerce login page',
+        'altcha_settings_select_callback',
+        'altcha_admin',
+        'altcha_integrations_settings_section',
+        array(
+            "name" => AltchaPlugin::$option_integration_woocommerce_login,
+            "spamfilter_options" => array(
               "captcha_spamfilter",
             ),
             "options" => array(

@@ -68,6 +68,7 @@ require plugin_dir_path( __FILE__ ) . './integrations/gravityforms.php';
 require plugin_dir_path( __FILE__ ) . './integrations/wpdiscuz.php';
 require plugin_dir_path( __FILE__ ) . './integrations/wpforms.php';
 require plugin_dir_path( __FILE__ ) . './integrations/wpmembers.php';
+require plugin_dir_path( __FILE__ ) . './integrations/woocommerce.php';
 require plugin_dir_path( __FILE__ ) . './integrations/wordpress.php';
 
 AltchaPlugin::$widget_script_src = plugin_dir_url(__FILE__) . "public/altcha.min.js";
