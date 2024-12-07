@@ -531,6 +531,7 @@ if (is_admin()) {
         'altcha_integrations_settings_section',
         array(
             "name" => AltchaPlugin::$option_integration_woocommerce_register,
+            "disabled" => !altcha_plugin_active('woocommerce'),
             "spamfilter_options" => array(
               "captcha_spamfilter",
             ),
@@ -550,6 +551,7 @@ if (is_admin()) {
         'altcha_integrations_settings_section',
         array(
             "name" => AltchaPlugin::$option_integration_woocommerce_reset_password,
+            "disabled" => !altcha_plugin_active('woocommerce'),
             "spamfilter_options" => array(
               "captcha_spamfilter",
             ),
@@ -569,6 +571,7 @@ if (is_admin()) {
         'altcha_integrations_settings_section',
         array(
             "name" => AltchaPlugin::$option_integration_woocommerce_login,
+            "disabled" => !altcha_plugin_active('woocommerce'),
             "spamfilter_options" => array(
               "captcha_spamfilter",
             ),
