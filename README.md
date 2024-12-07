@@ -27,6 +27,7 @@ Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpre
 * WP-Members
 * WordPress Login, Register, Password reset
 * WordPress Comments
+* WooCommerce
 * Custom HTML (with a short code `[altcha]`)
 
 ## Floating UI

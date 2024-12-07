@@ -2,8 +2,8 @@
 Tags: altcha, captcha, spam, anti-spam, anti-bot, antispam, recaptcha, hcaptcha, gdpr
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 1.12.0
-Stable tag: 1.12.0
+Version: 1.13.0
+Stable tag: 1.13.0
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6.6
@@ -95,6 +95,11 @@ All source code for the plugin, and the ALTCHA widget is available on GitHub. In
 5. Floating UI Captcha
 
 == Changelog ==
+
+= 1.13.0 =
+* WooCommerce integration [#26]
+* Improved validation message [#27]
+* Password lost error message [#28]
 
 = 1.12.0 =
 * HTML Forms - skip verification if the shortcode is not in the form markup [#23]
