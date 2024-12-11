@@ -54,6 +54,15 @@ add_filter(
     if ($user instanceof WP_Error) {
       return $user;
     }
+    if(defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) {
+      return $user; // Skip XMLRPC
+    }
+    if(defined('REST_REQUEST') && REST_REQUEST) {
+      return $user; // Skip REST API
+    }
+    if(altcha_plugin_active('woocommerce') && isset($_POST['woocommerce-login-nonce'])) {
+      return $user; // WooCommerce form submissions are handled separately
+    }
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_login();
     if (!empty($mode)) {
@@ -86,6 +95,9 @@ add_filter(
   function ($errors) {
     if (is_user_logged_in()) {
       return $errors;
+    }
+    if(altcha_plugin_active('woocommerce') && isset($_POST['woocommerce-lost-password-nonce'])) {
+      return $errors; // WooCommerce form submissions are handled separately
     }
     $plugin = AltchaPlugin::$instance;
     $mode = $plugin->get_integration_wordpress_reset_password();
