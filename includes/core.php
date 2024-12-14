@@ -286,18 +286,36 @@ class AltchaPlugin
 
   public function get_translations($language = null)
   {
+    $originalLanguage = null;
+
     if ($language === null) {
-      $language = $this->get_language();
+        $language = $this->get_language();
     }
-    if ($language === "auto") {
-      // Get the current locale
-      $language = get_locale();
-      if (!isset(ALTCHA_TRANSLATIONS[$language])) {
-        // Wordpress uses full codes such as `fr_FR`; if no translation is found, try short version `fr`
-        $language = substr($language, 0, 2);
-      }
+    if ($language !== "auto") {
+      $originalLocale = get_locale();
+      switch_to_locale($language);
     }
-    return ALTCHA_TRANSLATIONS[$language] ?: ALTCHA_TRANSLATIONS["en"];
+
+    $ALTCHA_WEBSITE = constant('ALTCHA_WEBSITE');
+    $translations = array(
+      "error" => __("Verification failed. Try again later.", "altcha-spam-protection"),
+      "footer" => sprintf(
+        __("Protected by %sALTCHA%s", "altcha-spam-protection"),
+        "<a href=\"$ALTCHA_WEBSITE\" target=\"_blank\">",
+        "</a>",
+      ),
+      "label" => __("I'm not a robot", "altcha-spam-protection"),
+      "verified" => __("Verified", "altcha-spam-protection"),
+      "verifying" => __("Verifying...", "altcha-spam-protection"),
+      "waitAlert" => __("Verifying... please wait.", "altcha-spam-protection"),
+      "cannot_submit" => __("Cannot submit.", "altcha-spam-protection"),
+    );
+
+    if ($originalLanguage !== null) {
+      switch_to_locale($originalLocale);
+    }
+
+    return $translations;
   }
 
 

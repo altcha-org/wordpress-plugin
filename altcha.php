@@ -21,33 +21,33 @@ define('ALTCHA_WEBSITE', 'https://altcha.org/');
 define('ALTCHA_WIDGET_VERSION', '1.0.0');
 define('ALTCHA_LANGUAGES', [
   "auto" => "Auto",
-  "bg" => "Bulgarian",
+  "bg_BG" => "Bulgarian",
   "ca" => "Catalan",
-  "cs" => "Czech",
-  "da" => "Danish",
-  "de" => "German",
+  "cs_CZ" => "Czech",
+  "da_DK" => "Danish",
+  "de_DE" => "German",
   "el" => "Greek",
-  "en" => "English",
-  "es" => "Spanish",
+  "en_US" => "English",
+  "es_ES" => "Spanish",
   "et" => "Estonian",
   "fi" => "Finnish",
-  "fr" => "French",
+  "fr_FR" => "French",
   "hr" => "Croatian",
-  "hu" => "Hungarian",
-  "it" => "Italian",
+  "hu_HU" => "Hungarian",
+  "it_IT" => "Italian",
   "ja" => "Japanese",
-  "lt" => "Lithuanian",
+  "lt_LT" => "Lithuanian",
   "lv" => "Latvian",
-  "nl" => "Dutch",
-  "no" => "Norwegian",
-  "pl" => "Polish",
-  "pt" => "Portuguese",
-  "ro" => "Romanian",
-  "ru" => "Russian",
-  "sk" => "Slovak",
-  "sr" =>	"Serbian",
-  "sv" => "Swedish",
-  "tr" => "Turkish",
+  "nl_NL" => "Dutch",
+  "nn_NO" => "Norwegian",
+  "pl_PL" => "Polish",
+  "pt_PT" => "Portuguese",
+  "ro_RO" => "Romanian",
+  "ru_RU" => "Russian",
+  "sk_SK" => "Slovak",
+  "sr_RS" => "Serbian",
+  "sv_SE" => "Swedish",
+  "tr_TR" => "Turkish",
   "uk" => "Ukrainian",
   "zh-CN" => "Chinese (simplified)",
   ]);
@@ -57,7 +57,6 @@ require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 require plugin_dir_path(__FILE__) . 'includes/helpers.php';
 require plugin_dir_path(__FILE__) . 'includes/core.php';
-require plugin_dir_path(__FILE__) . 'includes/translations.php';
 require plugin_dir_path( __FILE__ ) . './public/widget.php';
 
 require plugin_dir_path( __FILE__ ) . './integrations/contact-form-7.php';
@@ -82,6 +81,8 @@ AltchaPlugin::$custom_script_src = plugin_dir_url(__FILE__) . "public/custom.js"
 register_activation_hook(__FILE__, 'altcha_activate');
 register_deactivation_hook(__FILE__, 'altcha_deactivate');
 
+add_action('init', 'altcha_init');
+
 add_action('wp_enqueue_scripts', 'altcha_enqueue_widget_scripts');
 
 add_shortcode(
@@ -96,6 +97,14 @@ add_shortcode(
     return wp_kses($plugin->render_widget($a['mode'], true, $a['language']), AltchaPlugin::$html_espace_allowed_tags);
   }
 );
+
+function altcha_init() {
+  load_plugin_textdomain(
+    'altcha-spam-protection',
+    false,
+    dirname( plugin_basename( __FILE__ ) ) . '/languages/'
+  );
+}
 
 function altcha_activate()
 {
