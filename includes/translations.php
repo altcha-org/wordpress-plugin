@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 $ALTCHA_WEBSITE = constant('ALTCHA_WEBSITE');
 
-define('ALTCHA_VERSION_TRANSLATIONS', array(
+define('ALTCHA_TRANSLATIONS', array(
   "bg" => array(
     "error" => "Верификацията не бе успешна. Моля, опитайте отново по-късно.",
     "footer" => "Защитено от <a href=\"$ALTCHA_WEBSITE\" target=\"_blank\">ALTCHA</a>",

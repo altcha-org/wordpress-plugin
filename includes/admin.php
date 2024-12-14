@@ -33,7 +33,7 @@ if (is_admin()) {
         ));
         $settings_link = "<a href='$url'>" . __('Settings') . '</a>';
 
-        array_push(
+        array_unshift(
             $links,
             $settings_link
         );

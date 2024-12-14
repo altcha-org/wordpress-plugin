@@ -2,8 +2,8 @@
 Tags: altcha, captcha, spam, anti-spam, anti-bot, antispam, recaptcha, hcaptcha, gdpr
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 1.13.1
-Stable tag: 1.13.1
+Version: 1.14.0
+Stable tag: 1.14.0
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6.6
@@ -72,6 +72,7 @@ This plugin requires the WordPress REST API. If you are using any "Disable REST 
 * WP-Members
 * WordPress Login, Register, Password reset
 * WordPress Comments
+* WooCommerce
 * Custom HTML (with a short code `[altcha]`)
 
 == Source Code ==
@@ -95,6 +96,10 @@ All source code for the plugin, and the ALTCHA widget is available on GitHub. In
 5. Floating UI Captcha
 
 == Changelog ==
+
+= 1.14.0 =
+* Automatic language detection [#31]
+* Change placement of the "Settings" link in the plugin list [#32]
 
 = 1.13.1 =
 * Ignore WooCommerce form submissions in WordPress integration [#30]

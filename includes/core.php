@@ -289,7 +289,15 @@ class AltchaPlugin
     if ($language === null) {
       $language = $this->get_language();
     }
-    return ALTCHA_VERSION_TRANSLATIONS[$language] ?: ALTCHA_VERSION_TRANSLATIONS["en"];
+    if ($language === "auto") {
+      // Get the current locale
+      $language = get_locale();
+      if (!isset(ALTCHA_TRANSLATIONS[$language])) {
+        // Wordpress uses full codes such as `fr_FR`; if no translation is found, try short version `fr`
+        $language = substr($language, 0, 2);
+      }
+    }
+    return ALTCHA_TRANSLATIONS[$language] ?: ALTCHA_TRANSLATIONS["en"];
   }
 
 
