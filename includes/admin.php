@@ -23,6 +23,7 @@ if (is_admin()) {
 
     // Add link to settings in the plugin list
     add_filter('plugin_action_links_altcha/altcha.php', 'altcha_settings_link');
+    add_filter('plugin_action_links_altcha-spam-protection/altcha.php', 'altcha_settings_link');
 
     function altcha_settings_link($links)
     {
