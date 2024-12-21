@@ -19,45 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define('ALTCHA_VERSION', '1.14.1');
 define('ALTCHA_WEBSITE', 'https://altcha.org/');
 define('ALTCHA_WIDGET_VERSION', '1.0.0');
-define('ALTCHA_LANGUAGES', [
-  "auto" => "Auto",
-  "bg" => "Bulgarian",
-  "ca" => "Catalan",
-  "cs" => "Czech",
-  "da" => "Danish",
-  "de" => "German",
-  "el" => "Greek",
-  "en" => "English",
-  "es" => "Spanish",
-  "et" => "Estonian",
-  "fi" => "Finnish",
-  "fr" => "French",
-  "hr" => "Croatian",
-  "hu" => "Hungarian",
-  "it" => "Italian",
-  "ja" => "Japanese",
-  "lt" => "Lithuanian",
-  "lv" => "Latvian",
-  "nl" => "Dutch",
-  "no" => "Norwegian",
-  "pl" => "Polish",
-  "pt" => "Portuguese",
-  "ro" => "Romanian",
-  "ru" => "Russian",
-  "sk" => "Slovak",
-  "sr" =>	"Serbian",
-  "sv" => "Swedish",
-  "tr" => "Turkish",
-  "uk" => "Ukrainian",
-  "zh-CN" => "Chinese (simplified)",
-  ]);
 
 // required for is_plugin_active
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 require plugin_dir_path(__FILE__) . 'includes/helpers.php';
 require plugin_dir_path(__FILE__) . 'includes/core.php';
-require plugin_dir_path(__FILE__) . 'includes/translations.php';
 require plugin_dir_path( __FILE__ ) . './public/widget.php';
 
 require plugin_dir_path( __FILE__ ) . './integrations/contact-form-7.php';
@@ -82,6 +49,8 @@ AltchaPlugin::$custom_script_src = plugin_dir_url(__FILE__) . "public/custom.js"
 register_activation_hook(__FILE__, 'altcha_activate');
 register_deactivation_hook(__FILE__, 'altcha_deactivate');
 
+add_action('init', 'altcha_init');
+
 add_action('wp_enqueue_scripts', 'altcha_enqueue_widget_scripts');
 
 add_shortcode(
@@ -97,13 +66,20 @@ add_shortcode(
   }
 );
 
+function altcha_init() {
+  load_plugin_textdomain(
+    'altcha-spam-protection',
+    false,
+    dirname( plugin_basename( __FILE__ ) ) . '/languages/'
+  );
+}
+
 function altcha_activate()
 {
   update_option(AltchaPlugin::$option_api, 'selfhosted');
   update_option(AltchaPlugin::$option_api_key, '');
   update_option(AltchaPlugin::$option_expires, '3600');
   update_option(AltchaPlugin::$option_secret, AltchaPlugin::$instance->random_secret());
-  update_option(AltchaPlugin::$option_language, 'auto');
   update_option(AltchaPlugin::$option_hidefooter, true);
   update_option(AltchaPlugin::$option_send_ip, true);
   update_option(AltchaPlugin::$option_integration_custom, 'captcha');
