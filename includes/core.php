@@ -288,16 +288,17 @@ class AltchaPlugin
 
     $ALTCHA_WEBSITE = constant('ALTCHA_WEBSITE');
     $translations = array(
-      "error" => __("Verification failed. Try again later.", "altcha-spam-protection"),
+      "error" => __('Verification failed. Try again later.', 'altcha-spam-protection'),
       "footer" => sprintf(
-        __("Protected by %sALTCHA%s", "altcha-spam-protection"),
-        "<a href=\"$ALTCHA_WEBSITE\" target=\"_blank\">",
+        /* translators: the placeholders contain opening and closing tags for a link (<a> tag) */
+        __('Protected by %sALTCHA%s', 'altcha-spam-protection'),
+        '<a href="' . $ALTCHA_WEBSITE . '" target="_blank">',
         "</a>",
       ),
-      "label" => __("I'm not a robot", "altcha-spam-protection"),
-      "verified" => __("Verified", "altcha-spam-protection"),
-      "verifying" => __("Verifying...", "altcha-spam-protection"),
-      "waitAlert" => __("Verifying... please wait.", "altcha-spam-protection"),
+      "label" => __('I\'m not a robot', 'altcha-spam-protection'),
+      "verified" => __('Verified', 'altcha-spam-protection'),
+      "verifying" => __('Verifying...', 'altcha-spam-protection'),
+      "waitAlert" => __('Verifying... please wait.', 'altcha-spam-protection'),
     );
 
     if ($originalLanguage !== null) {

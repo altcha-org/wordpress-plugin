@@ -158,11 +158,11 @@ if (is_admin()) {
       'altcha_general_settings_section',
       array(
         "name" => AltchaPlugin::$option_api,
-        "hint" => "Select the API region.",
+        "hint" => __('Select the API region.', 'altcha-spam-protection'),
         "options" => array(
-          "selfhosted" => "Self-hosted",
-          "eu" => "EU (eu.altcha.org)",
-          "us" => "USA (us.altcha.org)"
+          "selfhosted" => __('Self-hosted', 'altcha-spam-protection'),
+          "eu" => __('EU (eu.altcha.org)', 'altcha-spam-protection'),
+          "us" => __('USA (us.altcha.org)', 'altcha-spam-protection'),
         )
       )
     );
@@ -176,7 +176,7 @@ if (is_admin()) {
       array(
         "spamfilter" => true,
         "name" => AltchaPlugin::$option_api_key,
-        "hint" => "Configure your API Key. Only for API modes. Leave this field empty in self-hosted.",
+        "hint" => __('Configure your API Key. Only for API modes. Leave this field empty in self-hosted.', 'altcha-spam-protection'),
         "type" => "text"
       )
     );
@@ -189,7 +189,7 @@ if (is_admin()) {
       'altcha_general_settings_section',
       array(
         "name" => AltchaPlugin::$option_secret,
-        "hint" => "Configure your API Key secret or HMAC signing secret.",
+        "hint" => __('Configure your API Key secret or HMAC signing secret.', 'altcha-spam-protection'),
         "type" => "text"
       )
     );
@@ -202,11 +202,11 @@ if (is_admin()) {
       'altcha_general_settings_section',
       array(
         "name" => AltchaPlugin::$option_complexity,
-        "hint" => "Select the PoW complexity for the widget.",
+        "hint" => __('Select the PoW complexity for the widget.', 'altcha-spam-protection'),
         "options" => array(
-          "low" => "Low",
-          "medium" => "Medium",
-          "high" => "High"
+          "low" => __('Low', 'altcha-spam-protection'),
+          "medium" => __('Medium', 'altcha-spam-protection'),
+          "high" => __('High', 'altcha-spam-protection'),
         )
       )
     );
@@ -219,11 +219,11 @@ if (is_admin()) {
       'altcha_general_settings_section',
       array(
         "name" => AltchaPlugin::$option_expires,
-        "hint" => "Select the life-span of the challenge.",
+        "hint" => __('Select the life-span of the challenge.', 'altcha-spam-protection'),
         "options" => array(
-          "3600" => "1 hour",
-          "14400" => "4 hours",
-          "0" => "None",
+          "3600" => __('1 hour', 'altcha-spam-protection'),
+          "14400" => __('4 hours', 'altcha-spam-protection'),
+          "0" => __('None', 'altcha-spam-protection'),
         )
       )
     );
@@ -245,8 +245,8 @@ if (is_admin()) {
       array(
         "spamfilter" => true,
         "name" => AltchaPlugin::$option_blockspam,
-        "description" => "Yes",
-        "hint" => "Don't allow form submissions if the Spam Filter detects potential spam.",
+        "description" => __('Yes', 'altcha-spam-protection'),
+        "hint" => __('Don\'t allow form submissions if the Spam Filter detects potential spam.', 'altcha-spam-protection'),
         "type" => "checkbox"
       )
     );
@@ -260,8 +260,8 @@ if (is_admin()) {
       array(
         "spamfilter" => true,
         "name" => AltchaPlugin::$option_send_ip,
-        "description" => "Yes",
-        "hint" => "Whether to send the user's IP address for classification.",
+        "description" => __('Yes', 'altcha-spam-protection'),
+        "hint" => __('Whether to send the user\'s IP address for classification.', 'altcha-spam-protection'),
         "type" => "checkbox"
       )
     );
@@ -282,12 +282,12 @@ if (is_admin()) {
       'altcha_widget_settings_section',
       array(
         "name" => AltchaPlugin::$option_auto,
-        "hint" => "Select auto-verification behaviour.",
+        "hint" => __('Select auto-verification behaviour.', 'altcha-spam-protection'),
         "options" => array(
-          "" => "Disabled",
-          "onload" => "On page load",
-          "onfocus" => "On form focus",
-          "onsubmit" => "On form submit",
+          "" => __('Disabled', 'altcha-spam-protection'),
+          "onload" => __('On page load', 'altcha-spam-protection'),
+          "onfocus" => __('On form focus', 'altcha-spam-protection'),
+          "onsubmit" => __('On form submit', 'altcha-spam-protection'),
         )
       )
     );
@@ -300,8 +300,8 @@ if (is_admin()) {
       'altcha_widget_settings_section',
       array(
         "name" => AltchaPlugin::$option_floating,
-        "description" => "Yes",
-        "hint" => "Enable Floating UI.",
+        "description" => __('Yes', 'altcha-spam-protection'),
+        "hint" => __('Enable Floating UI.', 'altcha-spam-protection'),
         "type" => "checkbox"
       )
     );
@@ -314,8 +314,8 @@ if (is_admin()) {
       'altcha_widget_settings_section',
       array(
         "name" => AltchaPlugin::$option_delay,
-        "description" => "Yes",
-        "hint" => "Add a delay of 1.5 seconds to verification.",
+        "description" => __('Yes', 'altcha-spam-protection'),
+        "hint" => __('Add a delay of 1.5 seconds to verification.', 'altcha-spam-protection'),
         "type" => "checkbox"
       )
     );
@@ -328,8 +328,8 @@ if (is_admin()) {
       'altcha_widget_settings_section',
       array(
         "name" => AltchaPlugin::$option_hidelogo,
-        "description" => "Yes",
-        "hint" => "Not available with Free API Keys.",
+        "description" => __('Yes', 'altcha-spam-protection'),
+        "hint" => __('Not available with Free API Keys.', 'altcha-spam-protection'),
         "type" => "checkbox"
       )
     );
@@ -342,8 +342,8 @@ if (is_admin()) {
       'altcha_widget_settings_section',
       array(
         "name" => AltchaPlugin::$option_hidefooter,
-        "description" => "Yes",
-        "hint" => "Hide Powered by ALTCHA. Not available with Free API Keys.",
+        "description" => __('Yes', 'altcha-spam-protection'),
+        "hint" => __('Hide Powered by ALTCHA. Not available with Free API Keys.', 'altcha-spam-protection'),
         "type" => "checkbox"
       )
     );
@@ -358,7 +358,7 @@ if (is_admin()) {
 
     add_settings_field(
         'altcha_settings_contact_form_7_integration_field',
-        'Contact Form 7',
+        __('Contact Form 7', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_integrations_settings_section',
@@ -370,17 +370,17 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-              "shortcode" => "Shortcode",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
+              "shortcode" => __('Shortcode', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_elementor_integration_field',
-        'Elementor Pro Forms',
+        __('Elementor Pro Forms', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_integrations_settings_section',
@@ -392,16 +392,16 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_forminator_integration_field',
-        'Forminator',
+        __('Forminator', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_integrations_settings_section',
@@ -413,16 +413,16 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_gravityforms_integration_field',
-        'Gravity Forms',
+        __('Gravity Forms', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_integrations_settings_section',
@@ -434,16 +434,16 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_html_forms_integration_field',
-        'HTML Forms',
+        __('HTML Forms', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_integrations_settings_section',
@@ -455,17 +455,17 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
-              "shortcode" => "Shortcode",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
+              "shortcode" => __('Shortcode', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_wpdiscuz_integration_field',
-        'WPDiscuz',
+        __('WPDiscuz', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_integrations_settings_section',
@@ -477,16 +477,16 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_wpforms_integration_field',
-        'WP Forms',
+        __('WP Forms', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_integrations_settings_section',
@@ -498,16 +498,16 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_woocommerce_register_integration_field',
-        'WooCommerce register page',
+        __('WooCommerce register page', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_integrations_settings_section',
@@ -518,16 +518,16 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_woocommerce_reset_password_integration_field',
-        'WooCommerce reset password page',
+        __('WooCommerce reset password page', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_integrations_settings_section',
@@ -538,16 +538,16 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_woocommerce_login_integration_field',
-        'WooCommerce login page',
+        __('WooCommerce login page', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_integrations_settings_section',
@@ -558,30 +558,33 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_custom_integration_field',
-        'Custom HTML',
+        __('Custom HTML', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_integrations_settings_section',
         array(
             "name" => AltchaPlugin::$option_integration_custom,
-            "hint" => "Use [altcha] shortcode anywhere in your HTML.",
+            "hint" => sprintf(
+              /* translators: the placeholder will be replaced with the shortcode */
+              __('Use %s shortcode anywhere in your HTML.', 'altcha-spam-protection'), '[altcha]',
+            ),
             "spamfilter_options" => array(
               "spamfilter",
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
@@ -596,7 +599,7 @@ if (is_admin()) {
 
     add_settings_field(
         'altcha_settings_wordpress_register_integration_field',
-        'Register page',
+        __('Register page', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_wordpress_settings_section',
@@ -606,16 +609,16 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_wordpress_reset_password_integration_field',
-        'Reset password page',
+        __('Reset password page', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_wordpress_settings_section',
@@ -625,16 +628,16 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_wordpress_login_integration_field',
-        'Login page',
+        __('Login page', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_wordpress_settings_section',
@@ -644,16 +647,16 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
 
     add_settings_field(
         'altcha_settings_wordpress_comments_integration_field',
-        'Comments',
+        __('Comments', 'altcha-spam-protection'),
         'altcha_settings_select_callback',
         'altcha_admin',
         'altcha_wordpress_settings_section',
@@ -663,9 +666,9 @@ if (is_admin()) {
               "captcha_spamfilter",
             ),
             "options" => array(
-              "" => "Disable",
-              "captcha" => "Captcha",
-              "captcha_spamfilter" => "Captcha + Spam Filter",
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
     );
