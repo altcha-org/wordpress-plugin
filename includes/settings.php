@@ -34,11 +34,6 @@ if (is_admin()) {
 
     register_setting(
       'altcha_options',
-      AltchaPlugin::$option_language
-    );
-
-    register_setting(
-      'altcha_options',
       AltchaPlugin::$option_hidefooter
     );
 
@@ -277,19 +272,6 @@ if (is_admin()) {
       __('Widget Customization', 'altcha-spam-protection'),
       'altcha_widget_section_callback',
       'altcha_admin'
-    );
-
-    add_settings_field(
-      'altcha_settings_language_field',
-      __('Language', 'altcha-spam-protection'),
-      'altcha_settings_select_callback',
-      'altcha_admin',
-      'altcha_widget_settings_section',
-      array(
-        "name" => AltchaPlugin::$option_language,
-        "hint" => "Select the language of the verification widget.",
-        "options" => ALTCHA_LANGUAGES
-      )
     );
 
     add_settings_field(

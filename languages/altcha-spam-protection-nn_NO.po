@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ALTCHA Spam Protection\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/altcha-spam-"
+"protection\n"
+"POT-Creation-Date: 2024-12-21T08:51:33+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: Norwegian Nynorsk\n"
+"Language: nn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: altcha-spam-protection\n"
+
+#. Plugin Name of the plugin
+#: altcha.php
+msgid "ALTCHA Spam Protection"
+msgstr ""
+
+#. Description of the plugin
+#: altcha.php
+msgid ""
+"ALTCHA is a free, open-source CAPTCHA alternative that offers robust "
+"protection without using cookies, ensuring full GDPR compliance by design. "
+"It also provides invisible anti-spam and anti-bot protection through "
+"ALTCHA's API."
+msgstr ""
+
+#. Author of the plugin
+#: altcha.php
+msgid "Altcha.org"
+msgstr ""
+
+#. Author URI of the plugin
+#: altcha.php
+msgid "https://altcha.org"
+msgstr ""
+
+#: includes/core.php:291
+msgid "Verification failed. Try again later."
+msgstr "Verifiseringen mislyktes. Prøv igjen senere."
+
+#: includes/core.php:293
+msgid "Protected by %sALTCHA%s"
+msgstr "Beskyttet av %sALTCHA%s"
+
+#: includes/core.php:297
+msgid "I'm not a robot"
+msgstr "Jeg er ikke en robot"
+
+#: includes/core.php:298
+msgid "Verified"
+msgstr "Verifisert"
+
+#: includes/core.php:299
+msgid "Verifying..."
+msgstr "Verifiserer..."
+
+#: includes/core.php:300
+msgid "Verifying... please wait."
+msgstr "Verifiserer... vennligst vent."
+
+#: includes/settings.php:148
+msgid "General"
+msgstr ""
+
+#: includes/settings.php:155
+msgid "API Region"
+msgstr ""
+
+#: includes/settings.php:172
+msgid "API Key"
+msgstr ""
+
+#: includes/settings.php:186
+msgid "Secret Key"
+msgstr ""
+
+#: includes/settings.php:199
+msgid "Complexity"
+msgstr ""
+
+#: includes/settings.php:216
+msgid "Expiration"
+msgstr ""
+
+#: includes/settings.php:234
+msgid "Spam Filter"
+msgstr ""
+
+#: includes/settings.php:241
+msgid "Block Spam Submissions"
+msgstr ""
+
+#: includes/settings.php:256
+msgid "Classify IP address"
+msgstr ""
+
+#: includes/settings.php:272
+msgid "Widget Customization"
+msgstr ""
+
+#: includes/settings.php:279
+msgid "Auto verification"
+msgstr ""
+
+#: includes/settings.php:297
+msgid "Floating UI"
+msgstr ""
+
+#: includes/settings.php:311
+msgid "Delay"
+msgstr ""
+
+#: includes/settings.php:325
+msgid "Hide logo"
+msgstr ""
+
+#: includes/settings.php:339
+msgid "Hide footer"
+msgstr ""
+
+#: includes/settings.php:354
+msgid "Integrations"
+msgstr ""
+
+#: includes/settings.php:592
+msgid "Wordpress"
+msgstr ""
+
+#: integrations/elementor/field.php:18
+msgid "ALTCHA"
+msgstr ""
+
+#: integrations/elementor/field.php:72
+msgid "Verification failed."
+msgstr ""
+
+#: integrations/forminator.php:35 integrations/gravityforms/field.php:79
+#: integrations/html-forms.php:49 integrations/html-forms.php:56
+#: integrations/woocommerce.php:28 integrations/woocommerce.php:74
+#: integrations/woocommerce.php:114 integrations/wordpress.php:28
+#: integrations/wordpress.php:71 integrations/wordpress.php:109
+#: integrations/wordpress.php:157 integrations/wpforms.php:28
+msgid "Could not verify you are not a robot."
+msgstr ""
+
+#: integrations/gravityforms/field.php:53
+msgid "ALTCHA placeholder"
+msgstr ""
+
+#: integrations/wordpress.php:28 integrations/wordpress.php:71
+#: integrations/wordpress.php:109 integrations/wordpress.php:157
+msgid "Error"
+msgstr ""
+
+#: integrations/wpmembers.php:16
+msgid "Registration failed. Please try again later."
+msgstr ""
