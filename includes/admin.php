@@ -12,8 +12,8 @@ if (is_admin()) {
     function altcha_options_page()
     {
         add_options_page(
-            'ALTCHA Spam Protection',
-            'ALTCHA Anti-spam',
+            __('ALTCHA Spam Protection', 'altcha-spam-protection'),
+            __('ALTCHA Anti-spam', 'altcha-spam-protection'),
             'manage_options',
             'altcha_admin',
             'altcha_options_page_html',
