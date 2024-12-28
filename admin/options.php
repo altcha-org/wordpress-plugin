@@ -66,27 +66,27 @@ function altcha_options_page_html()
 
     <div style="opacity: 0.8;">
       <p><?php
-        echo esc_html(sprintf(
-          __(
+        echo sprintf(
+          esc_html__(
               /* translators: %1$s is the plugin version, and %2$s is the widget version */
               'ALTCHA Spam Protection for WordPress, plugin version %1$s, widget version %2$s',
               'altcha-spam-protection',
           ),
           AltchaPlugin::$version,
           AltchaPlugin::$widget_version,
-        ));
+        );
       ?></p>
       <p>
         <?php
-        echo esc_html(sprintf(
-          __(
+        echo sprintf(
+          esc_html__(
             /* translators: the placeholders are opening and closing tags for a link (<a> tag) */
             'Please give ALTCHA a %s★★★★★ rating%s on WordPress.org to help us get the word out.',
             'altcha-spam-protection',
           ),
           '<a href="https://wordpress.org/support/plugin/altcha-spam-protection/reviews/?filter=5#new-post" target="_blank">',
           '</a>',
-        )); ?>
+        ); ?>
       </p>
       <p>
         <a href="https://github.com/altcha-org/altcha" target="_blank" style="display: inline-flex; gap: 0.3rem;">
