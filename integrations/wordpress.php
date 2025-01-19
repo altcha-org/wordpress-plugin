@@ -149,6 +149,10 @@ add_filter(
     if ($comment['comment_type'] != '' && $comment['comment_type'] != 'comment') {
       return $comment;
     }
+    // admin replies
+    if (is_user_logged_in() && current_user_can('manage_options')) {
+      return $comment;
+    }
     $plugin = AltchaPlugin::$instance;
     $mode = (altcha_plugin_active('wpdiscuz') && $plugin->get_integration_wpdiscuz()) || $plugin->get_integration_wordpress_comments();
     if (!empty($mode)) {
