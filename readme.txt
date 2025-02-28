@@ -2,8 +2,8 @@
 Tags: altcha, captcha, spam, anti-spam, anti-bot, antispam, recaptcha, hcaptcha, gdpr
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 1.16.0
-Stable tag: 1.16.0
+Version: 1.17.0
+Stable tag: 1.17.0
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6.6
@@ -96,6 +96,11 @@ All source code for the plugin, and the ALTCHA widget is available on GitHub. In
 5. Floating UI Captcha
 
 == Changelog ==
+
+= 1.17.0 =
+* Update widget to 1.2.0
+* Widget removes support for Expires header fixing potential auto-revalidation issues
+* Widget script provided as a UMD module allowing for JS minification
 
 = 1.16.0 =
 * Fix reply to comments from the admin page [#36]
