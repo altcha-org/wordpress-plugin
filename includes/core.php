@@ -6,6 +6,8 @@ class AltchaPlugin
 {
   public static $instance;
 
+  public static $language = "";
+
   public static $widget_script_src = "";
 
   public static $wp_script_src = "";
@@ -111,6 +113,7 @@ class AltchaPlugin
   public function init()
   {
     AltchaPlugin::$instance = $this;
+    AltchaPlugin::$language = get_locale();
     if (defined('ALTCHA_VERSION')) {
       AltchaPlugin::$version = ALTCHA_VERSION;
     }

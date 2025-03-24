@@ -13,7 +13,7 @@ if (altcha_plugin_active('contact-form-7')) {
       if ($mode === "captcha" || $mode === "captcha_spamfilter") {
         $input = '<input class="wpcf7-form-control wpcf7-submit ';
         $button = '<button class="wpcf7-form-control wpcf7-submit ';
-        $widget = wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);
+        $widget = wp_kses($plugin->render_widget($mode, true, AltchaPlugin::$language), AltchaPlugin::$html_espace_allowed_tags);
         if (strpos($elements, $input) !== false) {
           $elements = str_replace($input, $widget . $input, $elements);
         } else if (strpos($elements, $button) !== false) {
