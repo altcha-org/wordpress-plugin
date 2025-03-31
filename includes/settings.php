@@ -84,6 +84,11 @@ if (is_admin()) {
 
     register_setting(
       'altcha_options',
+      AltchaPlugin::$option_integration_enfold_theme
+    );
+
+    register_setting(
+      'altcha_options',
       AltchaPlugin::$option_integration_forminator
     );
 
@@ -397,6 +402,29 @@ if (is_admin()) {
               "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
             ),
         )
+    );
+
+    add_settings_field(
+      'altcha_settings_enfold_theme_integration_field',
+      __('Enfold Theme', 'altcha-spam-protection'),
+      'altcha_settings_select_callback',
+      'altcha_admin',
+      'altcha_integrations_settings_section',
+      array(
+        "name" => AltchaPlugin::$option_integration_enfold_theme,
+        "disabled" => empty(array_filter(wp_get_themes(), function($theme) { 
+          return stripos($theme, 'enfold') !== false;
+          })),
+        "spamfilter_options" => array(
+          "spamfilter",
+          "captcha_spamfilter",
+        ),
+        "options" => array(
+          "" => __('Disable', 'altcha-spam-protection'),
+          "captcha" => __('Captcha', 'altcha-spam-protection'),
+          "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
+        ),
+      )
     );
 
     add_settings_field(
