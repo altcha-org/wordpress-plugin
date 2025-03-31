@@ -78,6 +78,8 @@ class AltchaPlugin
 
   public static $option_integration_wpforms = "altcha_integration_wpforms";
 
+  public static $option_integration_enfold_theme = "altcha_integration_enfold_theme";
+
   public static $html_espace_allowed_tags = array(
     'altcha-widget' => array(
       'challengeurl' => array(),
@@ -192,6 +194,10 @@ class AltchaPlugin
   public function get_integration_elementor()
   {
     return trim(get_option(AltchaPlugin::$option_integration_elementor));
+  }
+
+  public function get_integration_enfold_theme() {
+    return trim(get_option(AltchaPlugin::$option_integration_enfold_theme));
   }
 
   public function get_integration_forminator()
@@ -318,6 +324,7 @@ class AltchaPlugin
       $this->get_integration_contact_form_7(),
       $this->get_integration_custom(),
       $this->get_integration_elementor(),
+      $this->get_integration_enfold_theme(),
       $this->get_integration_forminator(),
       $this->get_integration_gravityforms(),
       $this->get_integration_html_forms(),
