@@ -19,6 +19,7 @@ Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpre
 
 * Contact Form 7
 * Elementor Pro Forms
+* Enfold Theme
 * Forminator
 * GravityForms
 * HTML Forms
