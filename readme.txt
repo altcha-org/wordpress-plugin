@@ -54,7 +54,7 @@ Alternatively, install the plugin manually:
 1. Download the `.zip` from the [Releases](https://github.com/altcha-org/wordpress-plugin/releases).
 2. Upload `altcha` folder to the `/wp-content/plugins/` directory  
 3. Activate the plugin through the 'Plugins' menu in WordPress  
-4. Review the settings and enable the your integrations
+4. Review the settings and enable your integrations
 
 == REST API ==
 
