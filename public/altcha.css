@@ -24,6 +24,14 @@
   min-width: 260px;
 }
 
+.altcha-code-challenge {
+  z-index: 9999999;
+}
+
+.altcha-code-challenge form {
+  margin-bottom: 0 !important;
+}
+
 .login .altcha:not([data-floating]) {
   --altcha-max-width: 100%;
 }

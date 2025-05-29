@@ -93,6 +93,20 @@ function altcha_options_page_html()
           <span><?php echo esc_html__('Star ALTCHA on GitHub!', 'altcha-spam-protection'); ?></span>
         </a>
       </p>
+      <p><?php
+        echo sprintf(
+          esc_html__(
+            /* translators: the placeholder is a clickable link to altcha.org */
+            'To access the ALTCHA\'s cloud API, you need an API Key. Visit %s for more information.',
+            'altcha-spam-protection',
+          ),
+          '<a href="https://altcha.org" target="_blank">altcha.org</a>',
+        );
+      ?></p>
+
+      <div>
+        <a href="https://altcha.org/docs/api/api_keys/" target="_blank"><?php echo esc_html__('Create an API Key →', 'altcha-spam-protection'); ?></a>
+      </div>
     </div>
   </div>
 <?php
@@ -112,21 +126,6 @@ function altcha_general_section_callback()
         '</b>',
       );
     ?></p>
-
-    <p><?php
-      echo sprintf(
-        esc_html__(
-          /* translators: the placeholder is a clickable link to altcha.org */
-          'To access the ALTCHA\'s cloud API, you need an API Key. Visit %s for more information.',
-          'altcha-spam-protection',
-        ),
-        '<a href="https://altcha.org" target="_blank">altcha.org</a>',
-      );
-    ?></p>
-
-    <div>
-      <a href="https://altcha.org/docs/api/api_keys/" target="_blank" class="button button-primary"><?php echo esc_html__('Create an API Key →', 'altcha-spam-protection'); ?></a>
-    </div>
 
     <p><?php
       echo sprintf(
@@ -194,6 +193,7 @@ function altcha_settings_field_callback(array $args)
   $type = $args['type'];
   $name = $args['name'];
   $hint = isset($args['hint']) ? $args['hint'] : null;
+  $custom = isset($args['custom']) ? $args['custom'] : '';
   $spamfilter = isset($args['spamfilter']) ? $args['spamfilter'] : '';
   $description = isset($args['description']) ? $args['description'] : null;
   $setting = get_option($name);
@@ -202,7 +202,7 @@ function altcha_settings_field_callback(array $args)
     $value = 1;
   }
 ?>
-  <input autcomplete="none" class="regular-text" <?php echo $spamfilter === true ? ' data-spamfilter' : ''; ?> type="<?php echo esc_attr($type); ?>" name="<?php echo esc_attr($name); ?>" id="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($value) ?>" <?php $type == "checkbox" ? checked(1, $setting, true) : "" ?>>
+  <input autcomplete="none" class="regular-text"  <?php echo $custom === true ? ' data-custom-api' : ''; ?> <?php echo $spamfilter === true ? ' data-spamfilter' : ''; ?> type="<?php echo esc_attr($type); ?>" name="<?php echo esc_attr($name); ?>" id="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($value) ?>" <?php $type == "checkbox" ? checked(1, $setting, true) : "" ?>>
   <label class="description" for="<?php echo esc_attr($name); ?>"><?php echo esc_html($description); ?></label>
   <?php if ($hint) { ?>
   <div style="opacity:0.7;font-size:85%;margin-top:3px"><?php echo esc_html($hint); ?></div>

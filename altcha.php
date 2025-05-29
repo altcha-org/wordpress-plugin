@@ -78,6 +78,7 @@ function altcha_init() {
 function altcha_activate()
 {
   update_option(AltchaPlugin::$option_api, 'selfhosted');
+  update_option(AltchaPlugin::$option_api_custom_url, '');
   update_option(AltchaPlugin::$option_api_key, '');
   update_option(AltchaPlugin::$option_expires, '3600');
   update_option(AltchaPlugin::$option_secret, AltchaPlugin::$instance->random_secret());

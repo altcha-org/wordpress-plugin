@@ -26,6 +26,8 @@ class AltchaPlugin
 
   public static $option_api = "altcha_api";
 
+  public static $option_api_custom_url = "altcha_api_custom_url";
+
   public static $option_api_key = "altcha_api_key";
 
   public static $option_secret = "altcha_secret";
@@ -129,6 +131,11 @@ class AltchaPlugin
   public function get_api()
   {
     return trim(get_option(AltchaPlugin::$option_api));
+  }
+
+  public function get_api_custom_url()
+  {
+    return trim(get_option(AltchaPlugin::$option_api_custom_url));
   }
 
   public function get_api_key()
@@ -281,6 +288,9 @@ class AltchaPlugin
     $api = $this->get_api();
     if ($api === "selfhosted") {
       return get_rest_url(null, "/altcha/v1/challenge");
+    }
+    if ($api === "custom") {
+      return $this->get_api_custom_url();
     }
     $api_key = $this->get_api_key();
     return "https://$api.altcha.org/api/v1/challenge?apiKey=$api_key";

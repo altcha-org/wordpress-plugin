@@ -14,6 +14,11 @@ if (is_admin()) {
 
     register_setting(
       'altcha_options',
+      AltchaPlugin::$option_api_custom_url
+    );
+
+    register_setting(
+      'altcha_options',
       AltchaPlugin::$option_api_key
     );
 
@@ -166,9 +171,24 @@ if (is_admin()) {
         "hint" => __('Select the API region.', 'altcha-spam-protection'),
         "options" => array(
           "selfhosted" => __('Self-hosted', 'altcha-spam-protection'),
+          "custom" => __('Custom', 'altcha-spam-protection'),
           "eu" => __('EU (eu.altcha.org)', 'altcha-spam-protection'),
           "us" => __('USA (us.altcha.org)', 'altcha-spam-protection'),
         )
+      )
+    );
+
+    add_settings_field(
+      'altcha_settings_challenge_url_field',
+      __('Challenge URL', 'altcha-spam-protection'),
+      'altcha_settings_field_callback',
+      'altcha_admin',
+      'altcha_general_settings_section',
+      array(
+        "custom" => true,
+        "name" => AltchaPlugin::$option_api_custom_url,
+        "hint" => __('Configure your custom Challenge URL. Include the API key in the URL, if required.', 'altcha-spam-protection'),
+        "type" => "text"
       )
     );
 
