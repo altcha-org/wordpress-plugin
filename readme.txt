@@ -18,12 +18,6 @@ ALTCHA offers a free, open-source Captcha alternative, ensuring robust spam prot
 
 Unlike other solutions, ALTCHA is free, open-source, and self-hosted. It operates independently without external services, avoids the use of cookies and fingerprinting, refrains from user tracking, and maintains full compliance with GDPR regulations.
 
-== Spam Filter ==
-
-ALTCHA’s [Spam Filter](https://altcha.org/anti-spam) introduces a distinctive spam-detection feature enabling efficient classification of text and other information, empowering you to distinguish spam from legitimate messages. This anti-spam Captcha feature provides enhanced spam protection for your site.
-
-As a GDPR-compliant alternative to Akismet, this feature seamlessly integrates with the plugin for effortless activation.
-
 == Privacy ==
 
 = No cookies, no tracking =
@@ -46,8 +40,6 @@ Note: The Spam Filter requires ALTCHA’s SaaS. [Create an API Key](https://altc
 == Installation ==
 
 Download, install and activate `ALTCHA Spam Protection`.
-
-To use the Spam Filter, [create an API Key](https://altcha.org/docs/api/api_keys/) and configure it in the Settings.
  
 Alternatively, install the plugin manually:
 

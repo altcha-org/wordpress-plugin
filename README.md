@@ -33,7 +33,7 @@ Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpre
 
 ## Floating UI
 
-The plugin supports the [Floating UI](https://altcha.org/docs/floating-ui/) but with known limitations:
+The plugin supports the [Floating UI](https://altcha.org/docs/v2/floating-ui/) but with known limitations:
 
 Currently the Floating UI does not work with:
 
