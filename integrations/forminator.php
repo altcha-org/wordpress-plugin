@@ -50,7 +50,7 @@ function altcha_forminator_render_widget($html)
   $mode = $plugin->get_integration_forminator();
   if ($mode === "captcha" || $mode === "captcha_spamfilter") {
     $elements = wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);
-    return str_replace('<button class="forminator-button ', $elements . '<button class="forminator-button ', $html);
+    return str_replace('<div class="forminator-row forminator-row-last"', $elements . '<div class="forminator-row forminator-row-last"', $html);
   }
   return $html;
 }

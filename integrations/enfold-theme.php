@@ -30,8 +30,6 @@ if ( ! function_exists('altcha_enfold_theme_add_captcha_field') ) {
       return $elements;
     }
 
-    altcha_enqueue_scripts();
-    altcha_enqueue_styles();
     $captcha = [
       "id"        => "captcha",
       "type"      => "html",

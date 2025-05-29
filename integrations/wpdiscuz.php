@@ -9,8 +9,6 @@ add_action(
     $mode = $plugin->get_integration_wpdiscuz();
     if (!empty($mode)) {
       $plugin = AltchaPlugin::$instance;
-      altcha_enqueue_scripts();
-      altcha_enqueue_styles();
       $output = "<div class=\"altcha-widget-wrap-wpdiscuz\">";
       $output .= $plugin->render_widget($mode, false);
       $output .= "</div>";

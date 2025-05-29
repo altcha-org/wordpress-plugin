@@ -505,6 +505,8 @@ class AltchaPlugin
 
   public function render_widget($mode, $wrap = false, $language = null, $name = null)
   {
+    altcha_enqueue_scripts();
+    altcha_enqueue_styles();
     $attrs = $this->get_widget_attrs($mode, $language, $name);
     $attributes = join(' ', array_map(function ($key) use ($attrs) {
       if (is_bool($attrs[$key])) {

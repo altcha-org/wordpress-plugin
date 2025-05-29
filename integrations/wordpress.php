@@ -170,7 +170,5 @@ add_filter(
 function altcha_wordpress_comments_render_widget($mode, $name = null)
 {
   $plugin = AltchaPlugin::$instance;
-  altcha_enqueue_scripts();
-  altcha_enqueue_styles();
   echo wp_kses($plugin->render_widget($mode, true, null, $name), AltchaPlugin::$html_espace_allowed_tags);
 }
