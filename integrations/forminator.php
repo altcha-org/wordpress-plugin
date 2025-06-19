@@ -50,7 +50,18 @@ function altcha_forminator_render_widget($html)
   $mode = $plugin->get_integration_forminator();
   if ($mode === "captcha" || $mode === "captcha_spamfilter") {
     $elements = wp_kses($plugin->render_widget($mode, true), AltchaPlugin::$html_espace_allowed_tags);
-    return str_replace('<div class="forminator-row forminator-row-last"', $elements . '<div class="forminator-row forminator-row-last"', $html);
+    $target = '<div class="forminator-row forminator-row-last"';
+    $pos = strpos($html, $target);
+
+    if ($pos !== false) {
+        $html = substr_replace($html, $elements, $pos, 0);
+    } else {
+        $target = '<button class="forminator-button ';
+        $pos = strpos($html, $target);
+        if ($pos !== false) {
+            $html = substr_replace($html, $elements, $pos, 0);
+        }
+    }
   }
   return $html;
 }
