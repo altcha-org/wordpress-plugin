@@ -75,7 +75,10 @@ class ALTCHA_GFForms_Field extends GF_Field
 			if ($mode === "captcha" || $mode === "captcha_spamfilter") {
         $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field($_POST['altcha'])) : '';
 				if ($plugin->verify($altcha) === false) {
-					if ($plugin->get_api() !== "custom") {
+					if ($plugin->get_api() === "custom" && $plugin->spamfilter_result && $plugin->spamfilter_result['classification'] === 'BAD') {
+						// uses gform_entry_is_spam handler
+
+					} else {
 						$this->failed_validation  = true;
 						$this->validation_message = __('Could not verify you are not a robot.', 'altcha-spam-protection');
 					}
