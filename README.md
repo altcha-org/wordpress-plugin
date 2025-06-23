@@ -17,6 +17,7 @@ Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpre
 
 ## Supported Integrations
 
+* CoBlocks
 * Contact Form 7
 * Elementor Pro Forms
 * Enfold Theme

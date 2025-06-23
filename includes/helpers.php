@@ -4,6 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 function altcha_plugin_active($name) {
   switch ($name) {
+    case 'coblocks':
+      return is_plugin_active('coblocks/class-coblocks.php');
     case 'elementor':
       return is_plugin_active('elementor/elementor.php');
     case 'forminator':

@@ -50,6 +50,8 @@ class AltchaPlugin
 
   public static $option_hidelogo = "altcha_hidelogo";
 
+  public static $option_integration_coblocks = "altcha_integration_coblocks";
+
   public static $option_integration_contact_form_7 = "altcha_integration_contact_form_7";
 
   public static $option_integration_custom = "altcha_integration_custom";
@@ -186,6 +188,11 @@ class AltchaPlugin
   public function get_delay()
   {
     return trim(get_option(AltchaPlugin::$option_delay));
+  }
+
+  public function get_integration_coblocks()
+  {
+    return trim(get_option(AltchaPlugin::$option_integration_coblocks));
   }
 
   public function get_integration_contact_form_7()
@@ -466,7 +473,7 @@ class AltchaPlugin
     $api_key = $this->get_api_key();
     $floating = $this->get_floating();
     $delay = $this->get_delay();
-    $can_hide_branding = $api === 'selfhosted' || str_starts_with($api_key, 'key_');
+    $can_hide_branding = $api === 'selfhosted' || $api === 'custom' || str_starts_with($api_key, 'key_');
     $hidelogo = $can_hide_branding && $this->get_hidelogo();
     $hidefooter = $can_hide_branding && $this->get_hidefooter();
     $blockspam = $this->get_blockspam();

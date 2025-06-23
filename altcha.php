@@ -27,6 +27,7 @@ require plugin_dir_path(__FILE__) . 'includes/helpers.php';
 require plugin_dir_path(__FILE__) . 'includes/core.php';
 require plugin_dir_path( __FILE__ ) . './public/widget.php';
 
+require plugin_dir_path( __FILE__ ) . './integrations/coblocks.php';
 require plugin_dir_path( __FILE__ ) . './integrations/contact-form-7.php';
 require plugin_dir_path( __FILE__ ) . './integrations/custom.php';
 require plugin_dir_path( __FILE__ ) . './integrations/elementor.php';

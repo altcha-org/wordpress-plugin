@@ -54,6 +54,7 @@ This plugin requires the WordPress REST API. If you are using any "Disable REST 
 
 == Supported Integrations ==
 
+* CoBlocks
 * Contact Form 7
 * Elementor Pro Forms
 * Enfold Theme

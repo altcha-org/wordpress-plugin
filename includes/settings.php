@@ -74,6 +74,11 @@ if (is_admin()) {
 
     register_setting(
       'altcha_options',
+      AltchaPlugin::$option_integration_coblocks
+    );
+
+    register_setting(
+      'altcha_options',
       AltchaPlugin::$option_integration_contact_form_7
     );
 
@@ -379,6 +384,27 @@ if (is_admin()) {
       __('Integrations', 'altcha-spam-protection'),
       'altcha_integrations_section_callback',
       'altcha_admin'
+    );
+
+    add_settings_field(
+        'altcha_settings_coblocks_integration_field',
+        __('CoBlocks', 'altcha-spam-protection'),
+        'altcha_settings_select_callback',
+        'altcha_admin',
+        'altcha_integrations_settings_section',
+        array(
+            "name" => AltchaPlugin::$option_integration_coblocks,
+            "disabled" => !altcha_plugin_active('coblocks'),
+            "spamfilter_options" => array(
+              "spamfilter",
+              "captcha_spamfilter",
+            ),
+            "options" => array(
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
+            ),
+        )
     );
 
     add_settings_field(
