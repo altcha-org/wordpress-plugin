@@ -132,7 +132,7 @@ function altcha_general_section_callback()
         esc_html__(
           /* translators: the placeholder will be replaced with the domain name */
           'Your domain name for the API Key: %s',
-          'altcha_spam_protection',
+          'altcha-spam-protection',
         ),
         '<b>' . esc_html(AltchaPlugin::$hostname) . '</b>',
       );

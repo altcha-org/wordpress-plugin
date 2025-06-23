@@ -32,7 +32,7 @@ if (is_admin()) {
             'altcha_admin',
             get_admin_url() . 'options-general.php'
         ));
-        $settings_link = "<a href='$url'>" . __('Settings') . '</a>';
+        $settings_link = "<a href='$url'>" . __('Settings', 'altcha-spam-protection') . '</a>';
 
         array_unshift(
             $links,
