@@ -2,8 +2,8 @@
 Tags: altcha, captcha, spam, anti-spam, anti-bot, antispam, recaptcha, hcaptcha, gdpr
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 1.23.0
-Stable tag: 1.23.0
+Version: 1.24.0
+Stable tag: 1.24.0
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6.8
@@ -90,6 +90,9 @@ All source code for the plugin, and the ALTCHA widget is available on GitHub. In
 5. Floating UI Captcha
 
 == Changelog ==
+
+= 1.24.0 =
+* Fix issue with duplicate widget rendering in Elementor popups and WPDiscuz replies
 
 = 1.23.0 =
 * Support for CoBlocks
