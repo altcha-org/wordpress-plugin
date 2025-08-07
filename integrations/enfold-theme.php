@@ -50,7 +50,6 @@ add_filter( 'avf_form_send', function ($proceed, $new_post, $form_params, $that)
   /** @var avia_form $that */
   $plugin = AltchaPlugin::$instance;
   $mode = $plugin->get_integration_enfold_theme();
-  error_log($mode);
   if (!empty($mode)) {
     $altcha = isset($_POST['altcha']) ? trim(sanitize_text_field(urldecode($_POST['altcha']))) : '';
     if ($plugin->verify($altcha) === false) {

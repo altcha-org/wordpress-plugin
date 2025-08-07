@@ -25,6 +25,13 @@ class Elementor_Form_Altcha_Field extends \ElementorPro\Modules\Forms\Fields\Fie
     if (empty($mode) || $mode === 'spamfilter') {
       return '';
     }
+    wp_enqueue_script(
+      'altcha-elementor',
+      AltchaPlugin::$elementor_script_src,
+      array(),
+      ALTCHA_VERSION,
+      true
+    );
     echo wp_kses("<div style=\"flex-basis:100%\">" . $plugin->render_widget($mode, false) . "</div>", AltchaPlugin::$html_espace_allowed_tags);
     // shadow element for error reporting
 		echo wp_kses('<input type="hidden" ' . $form->get_render_attribute_string('input' . $item_index) . '>', AltchaPlugin::$html_espace_allowed_tags);

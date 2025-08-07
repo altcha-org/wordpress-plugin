@@ -16,6 +16,20 @@
           }, true);
         }
       });
+
+      // Removes duplicate widgets when manipulated with JS such as elementor popups and wpdiscuz
+      const observer = new MutationObserver((mutations) => {
+        [...document.querySelectorAll('altcha-widget')].forEach((el) => {
+          const altchas = [...el.querySelectorAll('.altcha')];
+          if (altchas.length > 1) {
+            altchas.slice(0, -1).forEach((altcha) => altcha.remove());
+          }
+        })
+      });
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
     });
   });
 })();
