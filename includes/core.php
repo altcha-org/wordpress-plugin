@@ -294,13 +294,15 @@ class AltchaPlugin
   {
     $api = $this->get_api();
     if ($api === "selfhosted") {
-      return get_rest_url(null, "/altcha/v1/challenge");
+      $challenge_url = get_rest_url(null, "/altcha/v1/challenge");
+    } else if ($api === "custom") {
+      $challenge_url = $this->get_api_custom_url();
+    } else {
+      $api_key = $this->get_api_key();
+      $challenge_url = "https://$api.altcha.org/api/v1/challenge?apiKey=$api_key";
     }
-    if ($api === "custom") {
-      return $this->get_api_custom_url();
-    }
-    $api_key = $this->get_api_key();
-    return "https://$api.altcha.org/api/v1/challenge?apiKey=$api_key";
+
+    return apply_filters('altcha_challenge_url', $challenge_url);
   }
 
   public function get_translations($language = null)
@@ -327,6 +329,8 @@ class AltchaPlugin
       "waitAlert" => __('Verifying... please wait.', 'altcha-spam-protection'),
     );
 
+    $translations = apply_filters('altcha_translations', $translations, $language);
+
     if ($originalLanguage !== null) {
       switch_to_locale($originalLanguage);
     }
@@ -334,8 +338,7 @@ class AltchaPlugin
     return $translations;
   }
 
-
-  public function has_active_integrations()
+  public function get_integrations()
   {
     $integrations = array(
       $this->get_integration_contact_form_7(),
@@ -354,6 +357,14 @@ class AltchaPlugin
       $this->get_integration_wordpress_comments(),
       $this->get_integration_wpforms(),
     );
+
+    return apply_filters('altcha_integrations', $integrations);
+  }
+
+  public function has_active_integrations()
+  {
+    $integrations = $this->get_integrations();
+
     return in_array("captcha", $integrations) || in_array("captcha_spamfilter", $integrations) || in_array("shortcode", $integrations);
   }
 
@@ -368,13 +379,20 @@ class AltchaPlugin
       $hmac_key = $this->get_secret();
     }
     if (empty($payload) || empty($hmac_key)) {
+      do_action('altcha_verify_result', false);
+
       return false;
     }
     $data = json_decode(base64_decode($payload));
     if (isset($data->verificationData)) {
-      return $this->verify_server_signature($payload, $hmac_key);
+      $result = $this->verify_server_signature($payload, $hmac_key);
+    } else {
+      $result = $this->verify_solution($payload, $hmac_key);
     }
-    return $this->verify_solution($payload, $hmac_key);
+
+    do_action('altcha_verify_result', $result);
+
+    return $result;
   }
 
   public function verify_server_signature($payload, $hmac_key = null)
@@ -507,7 +525,7 @@ class AltchaPlugin
     if ($mode === "captcha_spamfilter") {
       $attrs['spamfilter'] = '1';
     }
-    return $attrs;
+    return apply_filters('altcha_widget_attrs', $attrs, $mode, $language, $name);
   }
 
   public function render_widget($mode, $wrap = false, $language = null, $name = null)
@@ -529,9 +547,10 @@ class AltchaPlugin
       . "<div class=\"altcha-no-javascript\">This form requires JavaScript!</div>"
       . "</noscript>";
     if ($wrap) {
-      return '<div class="altcha-widget-wrap">' . $html . '</div>';
+      $html = '<div class="altcha-widget-wrap">' . $html . '</div>';
     }
-    return $html;
+
+    return apply_filters('altcha_widget_html', $html, $mode, $language, $name);
   }
 
   public function spam_filter_check($data, $ip = null, $ignore_fields = array())
