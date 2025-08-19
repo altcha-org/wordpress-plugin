@@ -25,7 +25,7 @@ function altcha_plugin_active($name) {
     case 'wpforms':
       return is_plugin_active('wpforms/wpforms.php') || is_plugin_active('wpforms-lite/wpforms.php');
     default:
-      return false;
+      return apply_filters('altcha_plugin_active', false, $name);
   }
 }
 

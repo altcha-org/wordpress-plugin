@@ -663,6 +663,8 @@ if (is_admin()) {
         )
     );
 
+    do_action('altcha_settings_integrations');
+
     // Section
     add_settings_section(
       'altcha_wordpress_settings_section',
