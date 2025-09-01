@@ -58,6 +58,8 @@ class AltchaPlugin
 
   public static $option_integration_elementor = "altcha_integration_elementor";
 
+  public static $option_integration_formidable = "altcha_integration_formidable";
+
   public static $option_integration_forminator = "altcha_integration_forminator";
 
   public static $option_integration_gravityforms = "altcha_integration_gravityforms";
@@ -212,6 +214,11 @@ class AltchaPlugin
 
   public function get_integration_enfold_theme() {
     return trim(get_option(AltchaPlugin::$option_integration_enfold_theme));
+  }
+
+  public function get_integration_formidable()
+  {
+    return trim(get_option(AltchaPlugin::$option_integration_formidable));
   }
 
   public function get_integration_forminator()

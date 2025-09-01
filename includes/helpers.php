@@ -8,6 +8,8 @@ function altcha_plugin_active($name) {
       return is_plugin_active('coblocks/class-coblocks.php');
     case 'elementor':
       return is_plugin_active('elementor/elementor.php');
+    case 'formidable':
+      return is_plugin_active('formidable/formidable.php');
     case 'forminator':
       return is_plugin_active('forminator/forminator.php');
     case 'gravityforms':

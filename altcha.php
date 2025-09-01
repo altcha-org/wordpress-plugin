@@ -32,6 +32,7 @@ require plugin_dir_path( __FILE__ ) . './integrations/contact-form-7.php';
 require plugin_dir_path( __FILE__ ) . './integrations/custom.php';
 require plugin_dir_path( __FILE__ ) . './integrations/elementor.php';
 require plugin_dir_path( __FILE__ ) . './integrations/enfold-theme.php';
+require plugin_dir_path( __FILE__ ) . './integrations/formidable.php';
 require plugin_dir_path( __FILE__ ) . './integrations/forminator.php';
 require plugin_dir_path( __FILE__ ) . './integrations/html-forms.php';
 require plugin_dir_path( __FILE__ ) . './integrations/gravityforms.php';

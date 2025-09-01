@@ -99,6 +99,11 @@ if (is_admin()) {
 
     register_setting(
       'altcha_options',
+      AltchaPlugin::$option_integration_formidable
+    );
+
+    register_setting(
+      'altcha_options',
       AltchaPlugin::$option_integration_forminator
     );
 
@@ -471,6 +476,27 @@ if (is_admin()) {
           "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
         ),
       )
+    );
+
+    add_settings_field(
+        'altcha_settings_formidable_integration_field',
+        __('Formidable Forms', 'altcha-spam-protection'),
+        'altcha_settings_select_callback',
+        'altcha_admin',
+        'altcha_integrations_settings_section',
+        array(
+            "name" => AltchaPlugin::$option_integration_formidable,
+            "disabled" => !altcha_plugin_active('formidable'),
+            "spamfilter_options" => array(
+              "spamfilter",
+              "captcha_spamfilter",
+            ),
+            "options" => array(
+              "" => __('Disable', 'altcha-spam-protection'),
+              "captcha" => __('Captcha', 'altcha-spam-protection'),
+              "captcha_spamfilter" => __('Captcha + Spam Filter', 'altcha-spam-protection'),
+            ),
+        )
     );
 
     add_settings_field(
