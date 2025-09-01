@@ -421,11 +421,13 @@ class AltchaPlugin
     }
     $data = json_decode(base64_decode($payload));
     $salt_url = wp_parse_url($data->salt);
-    parse_str($salt_url['query'], $salt_params);
-    if (!empty($salt_params['expires'])) {
-      $expires = intval($salt_params['expires'], 10);
-      if ($expires > 0 && $expires < time()) {
-        return false;
+    if (isset($salt_url['query']) && !empty($salt_url['query'])) {
+      parse_str($salt_url['query'], $salt_params);
+      if (!empty($salt_params['expires'])) {
+        $expires = intval($salt_params['expires'], 10);
+        if ($expires > 0 && $expires < time()) {
+          return false;
+        }
       }
     }
     $alg_ok = ($data->algorithm === 'SHA-256');
