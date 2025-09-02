@@ -88,6 +88,7 @@ class AltchaPlugin
 
   public static $html_espace_allowed_tags = array(
     'altcha-widget' => array(
+      'debug' => array(),
       'challengeurl' => array(),
       'strings' => array(),
       'auto' => array(),

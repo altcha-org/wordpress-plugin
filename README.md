@@ -49,6 +49,10 @@ In your WordPress installation, search for "altcha" in the plugin directory and 
 3. Activate the plugin through the 'Plugins' menu in WordPress  
 4. Review the settings and enable your integrations
 
+### Free Mode
+
+The free self-hosted mode is enabled by default after installation. No additional setup is required, except enabling the integrations you need in the plugin settings.
+
 ### REST API
 
 This plugin requires the WordPress REST API. If you are using any "Disable REST API" plugins, ensure that the endpoint `/altcha/v1/challenge` is allowed.

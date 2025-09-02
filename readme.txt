@@ -2,8 +2,8 @@
 Tags: altcha, captcha, spam, anti-spam, anti-bot, antispam, recaptcha, hcaptcha, gdpr
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 1.25.0
-Stable tag: 1.25.0
+Version: 1.26.0
+Stable tag: 1.26.0
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6.8
@@ -17,6 +17,10 @@ ALTCHA offers a free, open-source Captcha alternative, ensuring robust spam prot
 [ALTCHA](https://altcha.org) provides a free, open-source Captcha alternative utilizing a proof-of-work mechanism to safeguard your website against spam and unwanted content. Our anti-spam solution ensures robust spam protection without compromising user privacy.
 
 Unlike other solutions, ALTCHA is free, open-source, and self-hosted. It operates independently without external services, avoids the use of cookies and fingerprinting, refrains from user tracking, and maintains full compliance with GDPR regulations.
+
+== Free Mode ==
+
+The free self-hosted mode is enabled by default after installation. No additional setup is required, except enabling the integrations you need in the plugin settings.
 
 == Privacy ==
 
@@ -32,10 +36,8 @@ Operating in Self-hosted mode (the default setting), this plugin remains fully c
 
 This plugin operates in two modes, you can select which mode you want in the settings (see API Region):
 
-* Self-hosted - fully self-contained without external services.
-* 3rd-party external service - ALTCHA’s SaaS requiring an [API Key](https://altcha.org/docs/api/api_keys/), allows you to choose EU or US region.
-
-Note: The Spam Filter requires ALTCHA’s SaaS. [Create an API Key](https://altcha.org/docs/api/api_keys/) to access it.
+* Self-hosted - free, fully self-contained without external services.
+* Custom or SaaS API - requires a server such as [ALTCHA Sentinel](https://altcha.org/docs/v2/sentinel/).
  
 == Installation ==
 
@@ -90,6 +92,11 @@ All source code for the plugin, and the ALTCHA widget is available on GitHub. In
 5. Floating UI Captcha
 
 == Changelog ==
+
+= 1.26.0 =
+* Added Formidable Forms integration
+* Fixed PHP warning in the verify function
+* ALTCHA Widget 2.2.2
 
 = 1.25.0 =
 * Added hooks for improved customization and integration flexibility. [#45]
