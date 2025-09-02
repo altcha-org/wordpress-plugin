@@ -60,6 +60,7 @@ This plugin requires the WordPress REST API. If you are using any "Disable REST 
 * Contact Form 7
 * Elementor Pro Forms
 * Enfold Theme
+* Formidable Forms
 * Forminator
 * GravityForms
 * HTML Forms
