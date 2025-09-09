@@ -76,3 +76,10 @@ class Elementor_Form_Altcha_Field extends \ElementorPro\Modules\Forms\Fields\Fie
     }
   }
 }
+
+if (AltchaPlugin::$instance->get_integration_elementor()) {
+  // Since Elementor Pro 3.31.2, script enqueuing does not seem to work properly when the widget is rendered.
+  // Always enqueue scripts when the integration is active.
+  altcha_enqueue_scripts();
+  altcha_enqueue_styles();
+}
