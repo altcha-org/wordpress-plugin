@@ -2,8 +2,8 @@
 Tags: altcha, captcha, spam, anti-spam, anti-bot, antispam, recaptcha, hcaptcha, gdpr
 Author: Altcha.org
 Author URI: https://altcha.org
-Version: 1.26.1
-Stable tag: 1.26.1
+Version: 1.26.2
+Stable tag: 1.26.2
 Requires at least: 5.0
 Requires PHP: 7.3
 Tested up to: 6.8
@@ -13,6 +13,26 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 ALTCHA offers a free, open-source Captcha alternative, ensuring robust spam protection while respecting user privacy and GDPR compliance.
 
 == Description ==
+
+**This is ALTCHA Plugin version 1.**
+ 
+**ALTCHA Plugin version 2 is now available, offering improved protection and enhanced reliability. An upgrade is recommended for all users.**
+ 
+[Learn more](https://altcha.org/docs/v2/wordpress) | [Installation guide](https://altcha.org/docs/v2/wordpress/install) | [Migration guide](https://altcha.org/docs/v2/wordpress/migrating-from-v1/)
+
+What's new in version 2:
+
+* **Effective**: blocks 99% of spam and abuse attempts
+* **Invisible for users**: frictionless protection, no puzzles or CAPTCHAs
+* **Works everywhere**: plugin-agnostic [Request Interceptor](https://altcha.org/docs/v2/wordpress/features/#request-interceptor--works-everywhere) integrates with any form plugin
+* **Handles heavy traffic**: stay online with [Under Attack Mode](https://altcha.org/docs/v2/wordpress/features/#under-attack-mode--stay-online-under-pressure)
+* **Stops abuse at scale**: firewall and rate limiting included
+* **Privacy-first**: 100% GDPR-compliant and fully accessible
+* **Unlimited**: no external services, unlimited verifications
+
+Learn more about ALTCHA at [altcha.org](https://altcha.org).
+
+---
  
 [ALTCHA](https://altcha.org) provides a free, open-source Captcha alternative utilizing a proof-of-work mechanism to safeguard your website against spam and unwanted content. Our anti-spam solution ensures robust spam protection without compromising user privacy.
 
@@ -93,6 +113,9 @@ All source code for the plugin, and the ALTCHA widget is available on GitHub. In
 5. Floating UI Captcha
 
 == Changelog ==
+
+= 1.26.2 =
+* Updated readme for the new version 2.
 
 = 1.26.1 =
 * Fix Elementor Pro Forms widget rendering

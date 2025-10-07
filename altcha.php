@@ -7,16 +7,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Description: ALTCHA is a free, open-source CAPTCHA alternative that offers robust protection without using cookies, ensuring full GDPR compliance by design. It also provides invisible anti-spam and anti-bot protection through ALTCHA's API.
  * Author: Altcha.org
  * Author URI: https://altcha.org
- * Version: 1.26.1
- * Stable tag: 1.26.1
+ * Version: 1.26.2
+ * Stable tag: 1.26.2
  * Requires at least: 5.0
  * Requires PHP: 7.3
- * Tested up to: 6.6
+ * Tested up to: 6.8
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html  
  */
 
-define('ALTCHA_VERSION', '1.26.1');
+define('ALTCHA_VERSION', '1.26.2');
 define('ALTCHA_WEBSITE', 'https://altcha.org/');
 define('ALTCHA_WIDGET_VERSION', '2.2.2');
 
@@ -53,6 +53,7 @@ register_activation_hook(__FILE__, 'altcha_activate');
 register_deactivation_hook(__FILE__, 'altcha_deactivate');
 
 add_action('init', 'altcha_init');
+add_action('after_plugin_row_' . plugin_basename(__FILE__), 'altcha_plugin_custom_message');
 
 add_shortcode(
   'altcha',
@@ -89,4 +90,18 @@ function altcha_activate()
 
 function altcha_deactivate()
 {
+}
+
+function altcha_plugin_custom_message()
+{
+  echo '<tr class="plugin-update-tr active">
+      <td colspan="4" style="background:#fffbe5; border-left:4px solid #ffb900;">
+          <p style="margin:6px 3px;">
+              <strong>ALTCHA Plugin version 2 is now available, offering improved protection and enhanced reliability. An upgrade is recommended for all users.</strong>
+              <a href="https://altcha.org/docs/v2/wordpress/" target="_blank">Learn more</a>
+              |
+              <a href="https://altcha.org/docs/v2/wordpress/migrating-from-v1/" target="_blank">Migration guide</a>
+          </p>
+      </td>
+  </tr>';
 }

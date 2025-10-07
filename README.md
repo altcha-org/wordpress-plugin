@@ -1,6 +1,24 @@
 # ALTCHA for WordPress
 
-This repository contains the offical ALTCHA plugin for WordPress.
+> [!TIP]
+> [ALTCHA Plugin version 2](https://altcha.org/docs/v2/wordpress/) is now available, offering improved protection and enhanced reliability. An upgrade is recommended for all users.
+
+**This repository contains the offical ALTCHA plugin for WordPress version 1.**
+
+**For the new version 2, see [github.com/altcha-org/altcha-wordpress-next](https://github.com/altcha-org/altcha-wordpress-next) repository.**
+
+What's new in version 2:
+
+* **Effective**: blocks 99% of spam and abuse attempts
+* **Invisible for users**: frictionless protection, no puzzles or CAPTCHAs
+* **Works everywhere**: plugin-agnostic [Request Interceptor](https://altcha.org/docs/v2/wordpress/features/#request-interceptor--works-everywhere) integrates with any form plugin
+* **Handles heavy traffic**: stay online with [Under Attack Mode](https://altcha.org/docs/v2/wordpress/features/#under-attack-mode--stay-online-under-pressure)
+* **Stops abuse at scale**: firewall and rate limiting included
+* **Privacy-first**: 100% GDPR-compliant and fully accessible
+
+[Learn more](https://altcha.org/docs/v2/wordpress) | [Migration guide](https://altcha.org/docs/v2/wordpress/migrating-from-v1/)
+
+---
 
 ALTCHA offers a free, open-source Captcha alternative, ensuring robust spam protection while respecting user privacy and GDPR compliance.
 
@@ -9,9 +27,6 @@ Read more about ALTCHA: https://github.com/altcha-org/altcha
 Website: https://altcha.org
 
 WordPress Plugin Directory: https://wordpress.org/plugins/altcha-spam-protection/
-
-> [!TIP]
-> ALTCHA is now available in the WordPress Plugin Directory. You can easily install it directly from your WordPress installation.
 
 Having troubles? Please report in [Issues](https://github.com/altcha-org/wordpress-plugin/issues).
 
